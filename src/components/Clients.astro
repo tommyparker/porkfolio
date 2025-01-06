@@ -1,0 +1,31 @@
+---
+import Container from "../layouts/Container.astro"
+
+const logos = [
+  { src: 'src/assets/clients/TommyParker_Client_Apple.svg', alt: 'Apple' },
+  { src: 'src/assets/clients/TommyParker_Client_Audi.svg', alt: 'Audi' },
+  { src: 'src/assets/clients/TommyParker_Client_BMW.svg', alt: 'BMW' },
+  { src: 'src/assets/clients/TommyParker_Client_Economist.svg', alt: 'Economist' },
+  { src: 'src/assets/clients/TommyParker_Client_Ferrero.svg', alt: 'Ferrero' },
+  { src: 'src/assets/clients/TommyParker_Client_GQ.svg', alt: 'GQ' },
+  { src: 'src/assets/clients/TommyParker_Client_Guardian.svg', alt: 'Guardian' },
+  { src: 'src/assets/clients/TommyParker_Client_Harrys.svg', alt: 'Harrys' },
+  { src: 'src/assets/clients/TommyParker_Client_HuffPost.svg', alt: 'HuffPost' },
+  { src: 'src/assets/clients/TommyParker_Client_Mini.svg', alt: 'Mini' },
+  { src: 'src/assets/clients/TommyParker_Client_Mr-Porter.svg', alt: 'Mr Porter' },
+  { src: 'src/assets/clients/TommyParker_Client_Netflix.svg', alt: 'Netflix' },
+  { src: 'src/assets/clients/TommyParker_Client_Penguin.svg', alt: 'Penguin' },
+  { src: 'src/assets/clients/TommyParker_Client_Uber.svg', alt: 'Uber' },
+  { src: 'src/assets/clients/TommyParker_Client_Variety.svg', alt: 'Variety' },
+  { src: 'src/assets/clients/TommyParker_Client_Walmart.svg', alt: 'Walmart' },
+  { src: 'src/assets/clients/TommyParker_Client_Wired.svg', alt: 'Wired' },
+  { src: 'src/assets/clients/TommyParker_Client_WSJ.svg', alt: 'WSJ' },
+];
+---
+<Container>
+    <div class="grid gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        {logos.map((logo) => (
+            <img src={logo.src} alt={logo.alt} loading="lazy" class="w-full h-auto"/>
+        ))}
+    </div>
+</Container>
