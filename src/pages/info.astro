@@ -3,9 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Container from '../layouts/Container.astro';
 import Greeting from '../components/Greeting';
 import Clients from '../components/Clients.astro';
+
+import { Image } from 'astro:assets';
+import porker from "../assets/Porker.jpg";
+
+const pageTitle = "Info";
 ---
-<Layout>
-	<Container class="min-h-[50dvh]">
+<Layout pageTitle={pageTitle}>
+	<Container class="pb-32 md:min-h-[70dvh]">
 		<Greeting client:load messages={["Hey", "Howdy", "Hey there", "Yo", "Hello there", "Why hello"]} />
 	</Container>
     <Container>
@@ -17,25 +22,28 @@ import Clients from '../components/Clients.astro';
         </div>
     </Container>
     <Container>
+        <Image src={porker} alt="Porker." class="rounded-xl w-full" />
+    </Container>
+    <Container>
         <div class="grid grid-cols-4 gap-2 md:gap-4 border-t border-ink-50 dark:border-ink-900 pt-4 pb-8">
-            <h6 class="col-start-1 col-span-full md:col-span-2">Recogntion</h6>
+            <h6 class="col-start-1 col-span-full md:col-span-2">Recognition</h6>
             <div class="timeline">
                 <p class="year">2024</p>
                 <p class="note">Society of Illustrators 67</p>
 
                 <p class="year">2023</p>
                 <p class="note">Society of Illustrators 66</p>
-                <p class="note">DI Cross-category Award: Shortlisted</p>
-                <p class="note">World Illustration Awards: Advertising Shortlisted</p>
+                <p class="note">DI Cross-category Award: (Shortlisted)</p>
+                <p class="note">World Illustration Awards: Advertising (Shortlisted)</p>
 
                 <p class="year">2022</p>
-                <p class="note">World Illustration Awards: Advertising Longlisted</p>
+                <p class="note">World Illustration Awards: Advertising (Longlisted)</p>
 
                 <p class="year">2019</p>
-                <p class="note">World Illustration Awards: Experimental Shortlisted</p>
+                <p class="note">World Illustration Awards: Experimental (Shortlisted)</p>
 
                 <p class="year">2018</p>
-                <p class="note">World Illustration Awards: Editorial Shortlisted</p>
+                <p class="note">World Illustration Awards: Editorial (Shortlisted)</p>
             </div>
         </div>
     </Container>

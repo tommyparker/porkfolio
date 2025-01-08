@@ -2,9 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Container from '../layouts/Container.astro';
 import Greeting from '../components/Greeting';
+
+const pageTitle = "Work";
 ---
 
-<Layout>
+<Layout pageTitle={pageTitle}>
 	<Container>
 		<Greeting client:load messages={["Hey", "Howdy", "Hey there", "Yo", "Hello there", "Why hello"]} />
 	</Container>

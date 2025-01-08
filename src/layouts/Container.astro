@@ -1,6 +1,6 @@
 ---
-const { class: additionalClasses = '' } = Astro.props;
+const { class: additionalClasses, id: additionalId = '' } = Astro.props;
 ---
-<div class={`p-4 ${additionalClasses}`}>
+<div id={`${additionalId}`} class={`p-4 ${additionalClasses}`}>
     <slot />
 </div>

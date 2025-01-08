@@ -2,26 +2,31 @@
 import Container from '../layouts/Container.astro';
 ---
 
-<Container>
-    <div>Tommy Parker</div>
+<Container id="top">
+    <div><h6>Tommy Parker</h6></div>
 </Container>
 
-<Container class="grid grid-cols-4 gap-4">
-    <div>
-    <a href="/">Work</a>
-        <a href="/editorial">Editorial</a>
-        <a href="/animation">Animation</a>
-        <a href="/branding">Branding</a>
-        <a href="/campaign">Campaign</a>
-        <a href="/personal">Personal</a>
-    </div>
-    <div>
-        <a href="/info">Info</a>
-        <a href="/news">News</a>
-    </div>
-    <div>
-        <h6>Follow</h6>
-        <a href="#">Instagram</a>
-        <a href="#">Behance</a>
+<Container class=" w-full">
+    <div class="grid grid-cols-4 gap-4 bg-yellow text-black p-8 rounded-xl">
+        <div class="col-span-2">
+            <a class="nav-link" href="/">Work</a>
+            <ul class="flex flex-col">
+                <li><a class="sub-nav-link" href="/">All</a></li>
+                <li><a class="sub-nav-link" href="/editorial">Editorial</a></li>
+                <li><a class="sub-nav-link" href="/animation">Animation</a></li>
+                <li><a class="sub-nav-link" href="/branding">Branding</a></li>
+                <li><a class="sub-nav-link" href="/campaign">Campaign</a></li>
+                <li><a class="sub-nav-link" href="/personal">Personal</a></li>
+            </ul>
+        </div>
+        <div class="flex flex-col">
+            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link" href="/info">Info</a>
+            <a class="nav-link" href="/news">News</a>
+        </div>
+        <div class="flex flex-col">
+            <a class="nav-link" href="#">Instagram</a>
+            <a class="nav-link" href="#">Behance</a>
+        </div>
     </div>
 </Container>
