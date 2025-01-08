@@ -2,21 +2,24 @@
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
-    screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px'},
     colors: {
       'blue': '#1fb6ff',
-      'purple': '#7e5bef',
-      'pink': '#ff49db',
-      'orange': '#ff7849',
-      'green': '#13ce66',
       'yellow': '#ffc82c',
-      'gray-dark': '#273444',
-      'gray': '#8492a6',
-      'gray-light': '#d3dce6',
+      'paper': '#fdfcf7',
+      'black': '#0f0f0f',
+      'ink': {
+        50: '#e5e4df',
+        100: '#d9d8d4',
+        200: '#cdccc8',
+        300: '#b6b5b1',
+        400: '#868583',
+        500: '#6e6e6c',
+        600: '#565655',
+        700: '#3f3e3d',
+        800: '#333332',
+        900: '#272727',
+        950: '#1b1b1b',
+      },
     },
     fontFamily: {
       sans: ['Athletics', 'sans-serif'],
@@ -26,6 +29,8 @@ export default {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
 
