@@ -109,14 +109,30 @@
   }
 
   .thumbnail-container {
-    @apply grid gap-4;
-    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    @apply relative;
+  }
+
+  .masonry-sizer, .thumbnail {
+    @apply w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.3333333333%-10.6666666667px)] xl:w-[calc(25%-12px)];
+  }
+
+  .gutter-sizer {
+    @apply w-4;
   }
 
   .thumbnail {
-    @apply break-inside-avoid mb-4
+    @apply break-inside-avoid mb-4 rounded-xl;
   }
+  .thumbnail > img {
+    @apply rounded-xl transition-opacity duration-300 ease-in-out;
+    @apply group-hover:opacity-50;
+  }
+  .thumbnail > p {
+    @apply absolute inset-0 flex items-center justify-center text-center text-white text-lg font-bold;
+    @apply invisible group-hover:visible transition-opacity duration-300 ease-in-out;
+  }
+
   .masonry-sizer {
-    display: none;
+    @apply hidden;
   }
 }

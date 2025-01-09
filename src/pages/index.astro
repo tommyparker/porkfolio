@@ -17,11 +17,13 @@ const pageTitle = "Work";
 	<Container>
 		<Greeting client:load messages={["Hey", "Howdy", "Hey there", "Yo", "Hello there", "Why hello"]} />
 	</Container>
+  <Container class="py-0">
     <Masonry client:only>
       {
         projects.map((project) => (
           <Project url={`/projects/${project.slug}/`} title={project.data.title} thumbnail={project.data.thumbnail}/>
         ))
-        }
-      </Masonry>
+      }
+    </Masonry>
+  </Container>
 </Layout>

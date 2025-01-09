@@ -10,10 +10,10 @@ import porker from "../assets/Porker.jpg";
 const pageTitle = "Info";
 ---
 <Layout pageTitle={pageTitle}>
-	<Container class="pb-32 md:min-h-[70dvh]">
+	<Container class="pt-0 pb-32 md:min-h-[70dvh]">
 		<Greeting client:load messages={["Hey", "Howdy", "Hey there", "Yo", "Hello there", "Why hello"]} />
 	</Container>
-    <Container>
+    <Container class="py-0">
         <div class="grid grid-cols-4 gap-2 md:gap-4 border-t border-ink-50 dark:border-ink-900 pt-4 pb-8">
             <h6 class="col-start-1 col-span-2">About</h6>
             <p class="col-span-full col-start-1 md:col-start-3 md:col-span-2">
@@ -21,10 +21,10 @@ const pageTitle = "Info";
             </p>
         </div>
     </Container>
-    <Container>
+    <Container class="py-0">
         <Image src={porker} alt="Porker." class="rounded-xl w-full" />
     </Container>
-    <Container>
+    <Container class="py-0">
         <div class="grid grid-cols-4 gap-2 md:gap-4 border-t border-ink-50 dark:border-ink-900 pt-4 pb-8">
             <h6 class="col-start-1 col-span-full md:col-span-2">Recognition</h6>
             <div class="timeline">

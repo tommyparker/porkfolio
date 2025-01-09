@@ -8,12 +8,15 @@ const MasonryGrid = ({ children }) => {
       itemSelector: '.thumbnail',
       columnWidth: '.masonry-sizer',
       percentPosition: true,
+      gutter: '.gutter-sizer',
+      transitionDuration: '0.1s'
     });
   }, []);
 
   return (
     <div className="thumbnail-container">
       <div className="masonry-sizer"></div>
+      <div class="gutter-sizer"></div>
       {children}
     </div>
   );
