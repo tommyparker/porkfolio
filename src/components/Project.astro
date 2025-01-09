@@ -1,0 +1,11 @@
+---
+const { title, url, pubDate, thumbnail, slug } = Astro.props;
+import { Image } from 'astro:assets';
+---
+
+<a href={url}>
+  <div class="thumbnail">
+    <Image src={thumbnail.url} inferSize alt={thumbnail.alt} sizes="100vw" />
+    <p class="project-meta">{title}</p>
+  </div>
+</a>

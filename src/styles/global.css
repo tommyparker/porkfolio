@@ -85,7 +85,7 @@
   }
 
   p, blockquote, ul, li {
-    @apply text-ink-600 dark:text-ink-400 text-base lg:text-xl;
+    @apply text-ink-600 dark:text-ink-400 text-base lg:text-xl xl:text-xl;
   }
 
   .nav-link {
@@ -106,5 +106,17 @@
 
   .timeline .note {
     @apply col-start-1 col-span-full sm:col-start-2 md:col-start-3;
+  }
+
+  .thumbnail-container {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+  }
+
+  .thumbnail {
+    @apply break-inside-avoid mb-4
+  }
+  .masonry-sizer {
+    display: none;
   }
 }

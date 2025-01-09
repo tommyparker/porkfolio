@@ -9,8 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.0.4",
     "@astrojs/preact": "^4.0.1",
+    "@astrojs/tailwind": "^5.1.4",
+    "@types/react": "^19.0.4",
+    "@types/react-dom": "^19.0.2",
     "astro": "^5.1.2",
+    "gsap": "^3.12.5",
+    "masonry-layout": "^4.2.2",
     "preact": "^10.25.4"
   },
   "devDependencies": {
