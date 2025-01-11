@@ -1,10 +1,15 @@
-import { useEffect } from 'preact/hooks';
+import { useEffect, useLayoutEffect } from 'preact/hooks';
 import Isotope from 'isotope-layout';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const IsotopeGrid = ({ children }) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
+    // Isotope
     const grid = document.querySelector('.thumbnail-container');
-    new Isotope(grid, {
+    const iso = new Isotope(grid, {
       itemSelector: '.thumbnail',
       layoutMode: 'masonry',
       masonry: {
@@ -14,6 +19,36 @@ const IsotopeGrid = ({ children }) => {
       percentPosition: true,
       transitionDuration: '0.1s',
     });
+
+    // GSAP animations
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    
+    gsap.set(thumbnails, { 
+      opacity: 0,
+      y: 24,
+    });
+
+    gsap.to(thumbnails, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "expo.inOut",
+      stagger: {
+        amount: 0.6,
+        from: "top"
+      },
+      scrollTrigger: {
+        trigger: '.thumbnail-container',
+        start: 'top 80%',
+        toggleActions: 'play none none none',
+        once: true,
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      iso.destroy();
+    };
   }, []);
 
   return (
