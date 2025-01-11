@@ -1,0 +1,29 @@
+---
+import Layout from './Layout.astro';
+import Container from '../layouts/Container.astro';
+
+const { frontmatter } = Astro.props;
+
+---
+<Layout>
+    <Container>
+        <div>
+            <h6>About</h6>
+            <slot/>
+        </div>
+        <div>
+            <div >
+                <h6>Project</h6>
+                <p>{frontmatter.title}</p>
+            </div>
+            <div>
+                <h6>Art direction</h6>
+                <p>{frontmatter.artDirection}</p>
+            </div>
+            <div>
+                <h6>Client</h6>
+                <p>{frontmatter.client}</p>
+            </div>
+        </div>
+    </Container>
+</Layout>

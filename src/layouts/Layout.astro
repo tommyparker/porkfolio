@@ -5,27 +5,33 @@ import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 const { pageTitle } = Astro.props;
 
+import { animateScroll } from '../scripts/animateScroll.js';
+
 const anim = {
   old: {
-    name: 'pop',
-    duration: '0.4s',
+    name: 'change',
+    duration: '0.3s',
     easing: 'cubic-bezier(0.65,0,0.35,1)',
     direction: 'reverse',
   },
   new: {
-    name: 'pop',
-    delay: '0.45s',
-    duration: '0.4s',
+    name: 'change',
+    delay: '0.35s',
+    duration: '0.3s',
     easing: 'cubic-bezier(0.65,0,0.35,1)',
   },
 };
 
-const customTransition = {
+const change = {
   forwards: anim,
   backwards: anim,
 };
+
+if (typeof window !== 'undefined') {
+    setTimeout(() => animateScroll(), 0);
+}
 ---
-<html lang="en" class="scroll-smooth" transition:animate={customTransition}>
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -37,23 +43,21 @@ const customTransition = {
   </head>
   <body class="bg-paper dark:bg-ink-950">
     <Navigation/>
-      <slot />
+    <div transition:animate={change}>
+      <slot/>
+    </div>
     <Footer/>
   </body>
 </html>
 
-<script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" is:inline></script>
-
 <style is:global>
-  @keyframes pop {
+  @keyframes change {
     0% {
       opacity: 0;
-      transform: translateY(50px);
     }
     
     100% {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 </style>

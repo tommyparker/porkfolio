@@ -1,11 +1,13 @@
 ---
-const { title, url, pubDate, thumbnail, slug } = Astro.props;
+const { title, url, thumbnail, slug, index } = Astro.props;
 import { Image } from 'astro:assets';
+
+const loadingType = index < 8 ? "eager" : "lazy";
 ---
 
-<a href={url} class="group block">
+<a href={url} class="group block animate-on-scroll">
   <div class="thumbnail">
-    <Image src={thumbnail.url} inferSize alt={thumbnail.alt} sizes="100vw" />
+    <Image src={thumbnail.url} inferSize alt={thumbnail.alt} sizes="100vw" loading={loadingType}/>
     <p class="project-meta">{title}</p>
   </div>
 </a>

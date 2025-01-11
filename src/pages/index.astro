@@ -4,7 +4,6 @@ import Container from '../layouts/Container.astro';
 import Greeting from '../components/Greeting';
 import Masonry from '../components/Masonry';
 import Project from '../components/Project.astro';
-const allProjects = await getCollection("projects");
 
 import { getCollection } from 'astro:content';
 
@@ -20,8 +19,8 @@ const pageTitle = "Work";
   <Container class="py-0">
     <Masonry client:only>
       {
-        projects.map((project) => (
-          <Project url={`/projects/${project.slug}/`} title={project.data.title} thumbnail={project.data.thumbnail}/>
+        projects.map((project, index) => (
+          <Project url={`/projects/${project.slug}/`} title={project.data.title} thumbnail={project.data.thumbnail} index={index}/>
         ))
       }
     </Masonry>

@@ -1,25 +1,28 @@
 import { useEffect } from 'preact/hooks';
-import Masonry from 'masonry-layout';
+import Isotope from 'isotope-layout';
 
-const MasonryGrid = ({ children }) => {
+const IsotopeGrid = ({ children }) => {
   useEffect(() => {
     const grid = document.querySelector('.thumbnail-container');
-    new Masonry(grid, {
+    new Isotope(grid, {
       itemSelector: '.thumbnail',
-      columnWidth: '.masonry-sizer',
+      layoutMode: 'masonry',
+      masonry: {
+        columnWidth: '.masonry-sizer',
+        gutter: '.gutter-sizer',
+      },
       percentPosition: true,
-      gutter: '.gutter-sizer',
-      transitionDuration: '0.1s'
+      transitionDuration: '0.1s',
     });
   }, []);
 
   return (
     <div className="thumbnail-container">
       <div className="masonry-sizer"></div>
-      <div class="gutter-sizer"></div>
+      <div className="gutter-sizer"></div>
       {children}
     </div>
   );
 };
 
-export default MasonryGrid;
+export default IsotopeGrid;
