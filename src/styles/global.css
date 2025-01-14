@@ -113,7 +113,7 @@
   }
 
   .masonry-sizer, .thumbnail {
-    @apply w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.3333333333%-10.6666666667px)] xl:w-[calc(25%-12px)];
+    @apply w-[calc(50%-8px)] lg:w-[calc(33.3333333333%-10.6666666667px)] xl:w-[calc(25%-12px)];
   }
 
   .gutter-sizer {
@@ -121,15 +121,31 @@
   }
 
   .thumbnail {
-    @apply break-inside-avoid mb-4 rounded-xl;
+    @apply break-inside-avoid mb-4 rounded-xl relative z-[1];
   }
+
   .thumbnail > img {
-    @apply rounded-xl transition-opacity duration-300 ease-in-out;
-    @apply group-hover:opacity-50;
+    @apply rounded-xl group-hover:scale-[0.97] transition-all ease-in-out;
   }
-  .thumbnail > p {
-    @apply absolute inset-0 flex items-center justify-center text-center text-white text-lg font-bold;
-    @apply invisible group-hover:visible transition-opacity duration-300 ease-in-out;
+
+  .thumbnail:hover {
+    @apply z-10
+  }
+
+  .project-meta {
+    @apply absolute pointer-events-none bg-ink-800 py-3 px-4 z-20 top-0 left-0 rounded-full w-fit flex gap-2;
+  }
+
+  .project-meta > p {
+    @apply text-sm leading-tight inline text-paper;
+  }
+
+  .project-meta > .project-title {
+    @apply font-bold;
+  }
+
+  .project-meta > .project-client {
+    @apply font-normal;
   }
 
   .masonry-sizer {

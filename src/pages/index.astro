@@ -21,7 +21,7 @@ const pageTitle = "Work";
     <Masonry client:only>
       {
         projects.map((project, index) => (
-          <Project url={`/projects/${project.slug}/`} title={project.data.title} thumbnail={project.data.thumbnail} index={index}/>
+          <Project url={`/projects/${project.slug}/`} title={project.data.title} client={project.data.client} thumbnail={project.data.thumbnail} index={index}/>
         ))
       }
     </Masonry>

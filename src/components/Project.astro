@@ -1,5 +1,5 @@
 ---
-const { title, url, thumbnail, slug, index } = Astro.props;
+const { title, client, url, thumbnail, slug, index } = Astro.props;
 import { Image } from 'astro:assets';
 
 const loadingType = index < 8 ? "eager" : "lazy";
@@ -8,6 +8,9 @@ const loadingType = index < 8 ? "eager" : "lazy";
 <a href={url} class="group block">
   <div class="thumbnail">
     <Image src={thumbnail.url} inferSize alt={thumbnail.alt} sizes="100vw" loading={loadingType}/>
-    <p class="project-meta">{title}</p>
+    <div class="project-meta">
+      <p class="project-title">{title}</p>
+      <p class="project-client">{client}</p>
+    </div>
   </div>
 </a>
