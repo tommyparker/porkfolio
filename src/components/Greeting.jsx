@@ -7,7 +7,7 @@ export default function Greeting({ messages }) {
 
   return (
     <div>
-      <h1>{greeting}! I’m Tommy Parker — a freelance illustrator based in Devon, UK.</h1>
+      <h1>{greeting}! I’m Tommy Parker — a freelance illustrator.</h1>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { gsap } from 'gsap';
 
 document.addEventListener('astro:page-load', () => {
   const navigation = document.querySelector('.navigation');
+  const navHeight = navigation.offsetHeight;
 
   // Add scroll-based behavior
   let lastScrollPosition = window.scrollY;
@@ -19,7 +20,7 @@ document.addEventListener('astro:page-load', () => {
         // Scrolling down - hide navigation
         gsap.to(navigation, {
           opacity: 1,
-          y: -64,
+          y: -navHeight,
           duration: 0.3,
           ease: 'power2.Out'
         });
@@ -44,4 +45,7 @@ document.addEventListener('astro:page-load', () => {
     
     lastScrollPosition = currentScroll;
   });
+
+  // Update CSS variable with navigation height
+  document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
 });

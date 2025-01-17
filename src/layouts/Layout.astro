@@ -38,7 +38,7 @@ const change = {
   </head>
   <body class="bg-paper dark:bg-ink-950">
     <Navigation/>
-    <div transition:animate={change} class="pt-16">
+    <div transition:animate={change} class="pt-[var(--nav-height)]">
       <slot/>
     </div>
     <Footer/>
@@ -57,5 +57,9 @@ const change = {
     100% {
       opacity: 1;
     }
+  }
+
+  :root {
+    --nav-height: 0px;
   }
 </style>
