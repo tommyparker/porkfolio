@@ -1,42 +1,52 @@
 ---
 import Container from '../layouts/Container.astro';
 import Subscribe from '../components/Subscribe.astro'
+import Social from './Social.astro';
+import Mail from './Mail.astro';
+import { Image } from 'astro:assets';
+import porker from "../assets/Porker_Mail.webp";
 const currentYear = new Date().getFullYear();
 ---
 
 <Container id="contact" class="pt-0">
-    <div class="grid grid-cols-4 gap-4 p-4 min-h-[75svh] rounded-xl bg-ink-50 dark:bg-ink-900">
-        <div class="grid grid-cols-4 gap-4 col-span-full">
-            <div class="col-span-full">
-                <h1>Let’s talk!</h1>
-            </div>
-            <div class="col-span-2 md:col-span-1">
-                <h5>For work enquiries</h5>
-                <p><a href="mailto:luke@synergyart.co.uk" target="_blank">luke@synergyart.co.uk</a></p>
-            </div>
-            <div class="col-span-2 md:col-span-1">
-                <h5>For everything else</h5>
-                <p><a href="mailto:me@tommyparker.co.uk" target="_blank">me@tommyparker.co.uk</a></p>
+    <footer class="flex flex-col gap-4 p-4 min-h-[calc(100svh-32px)] rounded-xl bg-ink-50 dark:bg-ink-900">
+        <!-- Contact section -->
+        <div class="space-y-8">
+            <h1 class="max-w-[1024px]">If you’re interested in collaborating, drop me a message.</h1>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div>
+                    <h4>For work enquiries</h4>
+                    <Mail email="tommy@synergyart.co.uk" subject="Working with Tommy Parker ✏️"/>
+                </div>
+                <div class="xl:col-span-3">
+                    <h4>For everything else</h4>
+                    <Mail email="me@tommyparker.co.uk" subject="Hey there! 👋"/>
+                </div>
             </div>
         </div>
-        <div class="col-span-full grid grid-cols-4 gap-4">
-            <div class="col-span-1">
+
+        <!-- Porker image -->
+        <div class="mt-auto grid grid-cols-4">
+            <Image src={porker} alt="Porker" class="max-h-64 w-auto col-span-2 col-start-3 md:col-span-1 md:col-start-3" />
+        </div>
+
+        <!-- Footer bottom -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-ink-100 dark:border-ink-800">
+            <div class="col-span-2">
+                <h4 class="pb-2">Stay updated with my newsletter</h4>
                 <Subscribe/>
             </div>
-            <div class="col-span-1">
-                <p><a href="/">Work</a></p>
-                <p><a href="/info">Info</a></p>
+            <div class="flex flex-col col-span-1">
+                <h4>Follow</h4>
+                <p><Social platform="Instagram" username="t_mmyparker" /></p>
+                <p><Social platform="Behance" username="t_mmyparker" /></p>
             </div>
-            <div class="col-span-1">
-                <p><a href="https://www.instagram.com/t_mmyparker/" target="_blank">Instagram</a></p>
-                <p><a href="https://www.behance.net/t_mmyparker" target="_blank">Behance</a></p>
+            <div class="flex flex-col col-span-1 text-right">
+                <p>©</p>
+                <p>Tommy Parker</p>
+                <p>2014 — {currentYear}</p>
             </div>
         </div>
-        <div>
-            <p>© Tommy Parker {currentYear}</p>
-        </div>
-        <div>
-            <a href="#top"><h6>Back to top</h6></a>
-        </div>
-    </div>
+    </footer>
 </Container>

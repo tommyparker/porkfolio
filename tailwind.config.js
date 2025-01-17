@@ -30,7 +30,11 @@ export default {
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      transitionProperty: {
+        'height': 'height',
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),

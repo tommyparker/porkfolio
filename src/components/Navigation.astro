@@ -2,31 +2,12 @@
 import Container from '../layouts/Container.astro';
 ---
 
-<Container id="top">
-    <div><h6>Tommy Parker</h6></div>
-</Container>
-
-<Container class=" w-full">
-    <div class="grid grid-cols-4 gap-4 bg-yellow text-black p-8 rounded-xl">
-        <div class="col-span-2">
-            <a class="nav-link" href="/">Work</a>
-            <ul class="flex flex-col">
-                <li><a class="sub-nav-link" href="/">All</a></li>
-                <li><a class="sub-nav-link" href="/editorial">Editorial</a></li>
-                <li><a class="sub-nav-link" href="/animation">Animation</a></li>
-                <li><a class="sub-nav-link" href="/branding">Branding</a></li>
-                <li><a class="sub-nav-link" href="/campaign">Campaign</a></li>
-                <li><a class="sub-nav-link" href="/personal">Personal</a></li>
-            </ul>
-        </div>
-        <div class="flex flex-col">
-            <a class="nav-link" href="#contact">Contact</a>
-            <a class="nav-link" href="/info">Info</a>
-            <a class="nav-link" href="/news">News</a>
-        </div>
-        <div class="flex flex-col">
-            <a class="nav-link" href="https://www.instagram.com/t_mmyparker/" target="_blank">Instagram</a>
-            <a class="nav-link" href="https://www.behance.net/t_mmyparker" target="_blank">Behance</a>
-        </div>
+<Container class="navigation grid grid-cols-4 gap-4 justify-between w-full fixed z-50 bg-paper dark:bg-ink-950 border-b" id="top">
+    <h4 class="col-span-full sm:col-span-2"><a href="/">Tommy Parker</a></h4>
+    <div class="col-span-full sm:col-span-2 flex gap-4 md:gap-8">
+        <h4><a href="/">Work</a></h4>
+        <h4><a href="/news">Journal</a></h4>
+        <h4><a href="/info">Info</a></h4>
+        <h4><a href="#contact">Contact</a></h4>
     </div>
 </Container>

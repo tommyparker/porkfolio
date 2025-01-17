@@ -10,23 +10,23 @@ import porker from "../assets/Porker.jpg";
 const pageTitle = "Info";
 ---
 <Layout pageTitle={pageTitle}>
-	<Container class="pt-0 pb-32 md:min-h-[70dvh]">
+	<Container class="pt-0 pb-32 md:min-h-[40svh]">
 		<Greeting client:load messages={["Hey", "Howdy", "Hey there", "Yo", "Hello there", "Why hello"]} />
 	</Container>
     <Container class="py-0">
         <div class="grid grid-cols-4 gap-2 md:gap-4 border-t border-ink-50 dark:border-ink-900 pt-4 pb-8">
-            <h6 class="col-start-1 col-span-2">About</h6>
+            <h4 class="col-start-1 col-span-2">About</h4>
             <p class="col-span-full col-start-1 md:col-start-3 md:col-span-2">
                 My work is both character and colour-driven, and whilst graphic, it retains a tactile warmth and quirkiness. I aim to show intimate moments in familiar worlds that have been featured in editorials, book covers, branding and advertising campaigns.
             </p>
         </div>
     </Container>
-    <Container class="py-0">
+    <Container class="pt-0 pb-4">
         <Image src={porker} alt="Porker." class="rounded-xl w-full" />
     </Container>
     <Container class="py-0">
-        <div class="grid grid-cols-4 gap-2 md:gap-4 border-t border-ink-50 dark:border-ink-900 pt-4 pb-8">
-            <h6 class="col-start-1 col-span-full md:col-span-2">Recognition</h6>
+        <div class="grid grid-cols-4 gap-2 md:gap-4 pt-4 pb-8">
+            <h4 class="col-start-1 col-span-full md:col-span-2">Recognition</h4>
             <div class="timeline">
                 <p class="year">2024</p>
                 <p class="note">Society of Illustrators 67</p>

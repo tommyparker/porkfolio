@@ -38,10 +38,13 @@ const change = {
   </head>
   <body class="bg-paper dark:bg-ink-950">
     <Navigation/>
-    <div transition:animate={change}>
+    <div transition:animate={change} class="pt-16">
       <slot/>
     </div>
     <Footer/>
+    <script>
+      import "../scripts/menu.js";
+    </script>
   </body>
 </html>
 

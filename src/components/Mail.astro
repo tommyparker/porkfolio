@@ -1,0 +1,4 @@
+---
+const { email, subject } = Astro.props;
+---
+<a href={`mailto:${email}?subject=${subject}`} target="_blank">{email}</a>
