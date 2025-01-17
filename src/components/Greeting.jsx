@@ -6,8 +6,6 @@ export default function Greeting({ messages }) {
   const [greeting] = useState(randomMessage());
 
   return (
-    <div>
-      <h1>{greeting}! I’m Tommy Parker — a freelance illustrator.</h1>
-    </div>
+      <h1 class="max-w-[1024px]">{greeting}! I’m&nbsp;Tommy&nbsp;Parker —&nbsp;a&nbsp;freelance illustrator.</h1>
   );
 }
