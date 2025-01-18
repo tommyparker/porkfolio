@@ -6,11 +6,12 @@ import Clients from '../components/Clients.astro';
 
 import { Image } from 'astro:assets';
 import porker from "../assets/Porker.jpg";
+import Mail from '../components/Mail.astro';
 
 const pageTitle = "Info";
 ---
 <Layout pageTitle={pageTitle}>
-	<Container class="pb-32 md:min-h-[40svh]">
+	<Container class="pb-32 md:min-h-[30svh]">
 		<Greeting client:load messages={["Hey", "Howdy", "Hey there", "Yo", "Hello there", "Why hello"]} />
 	</Container>
     <Container class="py-0">
@@ -44,6 +45,18 @@ const pageTitle = "Info";
 
                 <p class="year">2018</p>
                 <p class="note">World Illustration Awards: Editorial (Shortlisted)</p>
+            </div>
+        </div>
+    </Container>
+    <Container class="py-0">
+        <div class="grid grid-cols-4 gap-2 md:gap-4 border-t border-ink-50 dark:border-ink-900 pt-4 pb-8">
+            <h4 class="col-start-1 col-span-2">Representation</h4>
+            <div class="col-span-full col-start-1 md:col-start-3 md:col-span-2">
+                <p>Synergy Art</p>
+                <p class="pb-2">(Worldwide)</p>
+                <p><a href="https://synergyart.co.uk/artists/tommy-parker" target="_blank">synergyart.co.uk</a></p>
+                <p><Mail email="luke@synergyart.co.uk" subject="Working with Tommy Parker ✏️"/></p>
+                <p><a href="tel:+442077204222">+44 (0)20 7720 4222</a></p>
             </div>
         </div>
     </Container>

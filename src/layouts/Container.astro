@@ -1,6 +1,50 @@
 ---
-const { class: additionalClasses, id: additionalId = '' } = Astro.props;
+const { 
+  class: additionalClasses, 
+  id: additionalId = '',
+  animate = true
+} = Astro.props;
+
+const containerClass = `p-4 ${animate ? 'animate-container' : ''} ${additionalClasses}`;
 ---
-<div id={`${additionalId}`} class={`p-4 ${additionalClasses}`}>
+<div id={`${additionalId}`} class={containerClass}>
     <slot />
 </div>
+
+<script>
+    import { gsap, ScrollTrigger, context } from '../scripts/gsapConfig';
+
+    function initializeAnimations() {
+      context.add(() => {
+        const containers = document.querySelectorAll('.animate-container');
+        
+        gsap.set(containers, {
+          opacity: 0,
+          y: 24
+        });
+
+        containers.forEach((container, index) => {
+          ScrollTrigger.create({
+            trigger: container,
+            start: 'top bottom-=100',
+            onEnter: () => {
+              gsap.to(container, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "expo.inOut",
+                delay: 0.1 * index,
+              });
+            },
+          });
+        });
+      });
+    }
+
+    initializeAnimations();
+
+    document.addEventListener('astro:page-load', () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      initializeAnimations();
+    });
+</script>

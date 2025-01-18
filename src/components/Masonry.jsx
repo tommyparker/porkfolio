@@ -1,14 +1,12 @@
 import { useEffect, useLayoutEffect } from 'preact/hooks';
 import Isotope from 'isotope-layout';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, ScrollTrigger, context } from '../scripts/gsapConfig';
 
 const IsotopeGrid = ({ children }) => {
   useLayoutEffect(() => {
-    // Isotope
     const grid = document.querySelector('.thumbnail-container');
+    if (!grid) return;
+
     const iso = new Isotope(grid, {
       itemSelector: '.thumbnail',
       layoutMode: 'masonry',
@@ -20,92 +18,103 @@ const IsotopeGrid = ({ children }) => {
       transitionDuration: '0.1s',
     });
 
-    // GSAP animations
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    
-    // Initial animations
-    gsap.set(thumbnails, { 
-      opacity: 0,
-      y: 24,
-    });
-
-    // Set initial position for project-meta elements
-    thumbnails.forEach(thumbnail => {
-      const meta = thumbnail.querySelector('.project-meta');
-      if (meta) {
-        gsap.set(meta, {
-          xPercent: -50,
-          yPercent: -50,
-          x: "50%",
-          y: "50%"
-        });
-      }
-    });
-
-    // Replace the single entrance animation with individual triggers
-    thumbnails.forEach((thumbnail, index) => {
-      ScrollTrigger.create({
-        trigger: thumbnail,
-        start: 'top bottom-=100',
-        onEnter: () => {
-          gsap.to(thumbnail, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "expo.inOut",
-            delay: index % 3 * 0.1, // Stagger effect for items entering viewport together
-          });
-        },
-        once: true
-      });
-    });
-
-    // Mouse follow logic
-    thumbnails.forEach(thumbnail => {
-      const meta = thumbnail.querySelector('.project-meta');
-      if (!meta) return;
-
-      // Hide meta initially
-      gsap.set(meta, {
-        opacity: 0,
-        scale: 0,
-        xPercent: -50,
-        yPercent: 50,
-      });
-
-      const xSetter = gsap.quickSetter(meta, "x", "px");
-      const ySetter = gsap.quickSetter(meta, "y", "px");
-
-      thumbnail.addEventListener('mouseenter', () => {
-        gsap.to(meta, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.2
-        });
-      });
-
-      thumbnail.addEventListener('mousemove', (e) => {
-        const rect = thumbnail.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+    function initializeScrollAnimations() {
+      context.add(() => {
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        if (!thumbnails.length) return;
         
-        xSetter(x);
-        ySetter(y);
-      });
+        gsap.set(thumbnails, { 
+          opacity: 0,
+          y: 24,
+        });
 
-      thumbnail.addEventListener('mouseleave', () => {
-        gsap.to(meta, {
+        thumbnails.forEach((thumbnail, index) => {
+          ScrollTrigger.create({
+            trigger: thumbnail,
+            start: 'top bottom-=100',
+            onEnter: () => {
+              gsap.to(thumbnail, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "expo.inOut",
+                delay: index % 3 * 0.1,
+              });
+            },
+          });
+        });
+      });
+    }
+
+    function initializeHoverAnimations() {
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      thumbnails.forEach(thumbnail => {
+        const meta = thumbnail.querySelector('.project-meta');
+        if (!meta) return;
+
+        // Reset the meta element state
+        gsap.killTweensOf(meta);
+        gsap.set(meta, {
           opacity: 0,
           scale: 0,
-          duration: 0.2
+          xPercent: -50,
+          yPercent: 50,
+        });
+
+        const xSetter = gsap.quickSetter(meta, "x", "px");
+        const ySetter = gsap.quickSetter(meta, "y", "px");
+
+        thumbnail.addEventListener('mouseenter', () => {
+          gsap.to(meta, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.2
+          });
+        });
+
+        thumbnail.addEventListener('mousemove', (e) => {
+          const rect = thumbnail.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          xSetter(x);
+          ySetter(y);
+        });
+
+        thumbnail.addEventListener('mouseleave', () => {
+          gsap.to(meta, {
+            opacity: 0,
+            scale: 0,
+            duration: 0.2
+          });
         });
       });
-    });
+    }
 
-    // Cleanup
+    function initializeAnimations() {
+      initializeScrollAnimations();
+      // Delay hover animations slightly to ensure DOM is ready
+      setTimeout(initializeHoverAnimations, 100);
+    }
+
+    // Initialize on first load
+    initializeAnimations();
+
+    // Initialize after Isotope layout
+    iso.on('layoutComplete', initializeAnimations);
+
+    // Handle page transitions
+    const pageLoadHandler = () => {
+      iso.layout();
+      initializeAnimations();
+    };
+
+    document.addEventListener('astro:page-load', pageLoadHandler);
+
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      document.removeEventListener('astro:page-load', pageLoadHandler);
       iso.destroy();
+      context.revert();
     };
   }, []);
 
