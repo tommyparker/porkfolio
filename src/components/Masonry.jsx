@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from 'preact/hooks';
+import { useLayoutEffect } from 'preact/hooks';
 import Isotope from 'isotope-layout';
 import { gsap, ScrollTrigger, context } from '../scripts/gsapConfig';
 
@@ -92,6 +92,8 @@ const IsotopeGrid = ({ children }) => {
     }
 
     function initializeAnimations() {
+      // Kill any existing ScrollTriggers before reinitializing
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       initializeScrollAnimations();
       // Delay hover animations slightly to ensure DOM is ready
       setTimeout(initializeHoverAnimations, 100);
@@ -101,7 +103,9 @@ const IsotopeGrid = ({ children }) => {
     initializeAnimations();
 
     // Initialize after Isotope layout
-    iso.on('layoutComplete', initializeAnimations);
+    iso.on('layoutComplete', () => {
+      iso.layout(); // Refresh the layout
+    });
 
     // Handle page transitions
     const pageLoadHandler = () => {

@@ -14,37 +14,72 @@ const containerClass = `p-4 ${animate ? 'animate-container' : ''} ${additionalCl
 <script>
     import { gsap, ScrollTrigger, context } from '../scripts/gsapConfig';
 
-    function initializeAnimations() {
-      context.add(() => {
-        const containers = document.querySelectorAll('.animate-container');
-        
-        gsap.set(containers, {
-          opacity: 0,
-          y: 24
-        });
-
-        containers.forEach((container, index) => {
-          ScrollTrigger.create({
-            trigger: container,
-            start: 'top bottom-=100',
-            onEnter: () => {
-              gsap.to(container, {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: "expo.inOut",
-                delay: 0.1 * index,
-              });
-            },
-          });
-        });
-      });
+    function animateContainer(container: HTMLElement) {
+      gsap.fromTo(container, 
+        { opacity: 0, y: 24 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.8,
+          ease: "expo.inOut",
+        }
+      );
     }
 
+    function initializeAnimations() {
+      // Small delay to ensure Masonry has initialized if present
+      setTimeout(() => {
+        context.add(() => {
+          const containers = document.querySelectorAll('.animate-container');
+          if (!containers.length) return;
+          
+          containers.forEach((container, index) => {
+            // Skip if container is part of Masonry
+            if (container.closest('.thumbnail-container')) return;
+            
+            gsap.set(container, { opacity: 0, y: 24 });
+            
+            // Check if container is in viewport
+            const rect = container.getBoundingClientRect();
+            const isInViewport = rect.top < window.innerHeight;
+
+            if (isInViewport) {
+              // Animate immediately if in viewport
+              setTimeout(() => animateContainer(container as HTMLElement), index * 100);
+            } else {
+              // Create scroll trigger for containers below viewport
+              ScrollTrigger.create({
+                trigger: container,
+                start: 'top bottom',
+                end: 'bottom bottom',
+                once: true,
+                onEnter: () => {
+                  setTimeout(() => animateContainer(container as HTMLElement), index * 100);
+                }
+              });
+            }
+          });
+        });
+      }, 100);
+    }
+
+    // Initialize on first load
     initializeAnimations();
+
+    // Handle page transitions
+    document.addEventListener('astro:after-swap', () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      context.revert();
+    });
 
     document.addEventListener('astro:page-load', () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      context.revert();
       initializeAnimations();
+    });
+
+    document.addEventListener('astro:before-swap', () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      context.revert();
     });
 </script>
