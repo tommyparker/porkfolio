@@ -22,7 +22,6 @@ const postsCollection = defineCollection({
       url: image(),
       alt: z.string(),
     }),
-    tags: z.array(z.string()),
   }),
 });
 

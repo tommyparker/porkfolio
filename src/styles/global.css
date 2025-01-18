@@ -80,6 +80,10 @@
     @apply text-sm sm:text-base lg:text-lg xl:text-xl leading-normal;
   }
 
+  a {
+    @apply underline underline-offset-4 decoration-ink-300 dark:decoration-ink-700 hover:decoration-black hover:dark:decoration-paper;
+  }
+
   input {
     @apply leading-tight inline-block;
   }
@@ -91,7 +95,7 @@
 
   /* Nav */
   .menu {
-    @apply h-svh hidden bg-blue rounded-xl transition-all ease-in-out;
+    @apply h-svh hidden bg-blue rounded-xl;
   }
 
   .menu.open {

@@ -1,3 +1,22 @@
 ---
+import { getCollection } from "astro:content";
+import Layout from '../layouts/Layout.astro';
+import BlogPost from '../components/BlogPost.astro';
+const allPosts = await getCollection("posts");
+import '../styles/global.css';
+import Container from '../layouts/Container.astro';
 
+const pageTitle = "News";
 ---
+
+<Layout pageTitle={pageTitle}>
+	<Container>
+		<h1>Drawn</h1>
+		<p>A place for news from my studio, covering project and job updates, showing tidbits from behind the scenes, sharing inspiration from other places and people, and posting the occasional piece of writing.</p>
+		{
+			allPosts.map((post) => (
+			  <BlogPost url={`/posts/${post.slug}/`} title={post.data.title} pubDate={post.data.pubDate}/>
+			))
+		  }
+	</Container>
+</Layout>
