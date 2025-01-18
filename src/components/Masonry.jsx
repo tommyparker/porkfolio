@@ -19,96 +19,103 @@ const IsotopeGrid = ({ children }) => {
     });
 
     function initializeScrollAnimations() {
-      context.add(() => {
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        if (!thumbnails.length) return;
-        
-        gsap.set(thumbnails, { 
-          opacity: 0,
-          y: 24,
-        });
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      if (!thumbnails.length) return;
+      
+      gsap.set(thumbnails, { 
+        opacity: 0,
+        y: 24,
+      });
 
-        thumbnails.forEach((thumbnail, index) => {
-          ScrollTrigger.create({
-            trigger: thumbnail,
-            start: 'top bottom-=100',
-            onEnter: () => {
-              gsap.to(thumbnail, {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: "expo.inOut",
-                delay: index % 3 * 0.1,
-              });
-            },
-          });
+      thumbnails.forEach((thumbnail, index) => {
+        ScrollTrigger.create({
+          trigger: thumbnail,
+          start: 'top bottom-=100',
+          onEnter: () => {
+            gsap.to(thumbnail, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "expo.inOut",
+              delay: index % 3 * 0.1,
+            });
+          },
         });
       });
     }
 
     function initializeHoverAnimations() {
       const thumbnails = document.querySelectorAll('.thumbnail');
+      
       thumbnails.forEach(thumbnail => {
         const meta = thumbnail.querySelector('.project-meta');
         if (!meta) return;
 
-        // Reset the meta element state
-        gsap.killTweensOf(meta);
+        // Store event listeners for proper cleanup
+        const onMouseEnter = () => {
+          gsap.to(meta, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.2,
+            overwrite: true
+          });
+        };
+
+        const onMouseMove = (e) => {
+          const rect = thumbnail.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          gsap.set(meta, {
+            x: x,
+            y: y,
+            xPercent: -50,
+            yPercent: 48,
+          });
+        };
+
+        const onMouseLeave = () => {
+          gsap.to(meta, {
+            opacity: 0,
+            scale: 0,
+            duration: 0.2,
+            overwrite: true
+          });
+        };
+
+        // Remove existing listeners if any
+        thumbnail.removeEventListener('mouseenter', onMouseEnter);
+        thumbnail.removeEventListener('mousemove', onMouseMove);
+        thumbnail.removeEventListener('mouseleave', onMouseLeave);
+
+        // Set initial state
         gsap.set(meta, {
           opacity: 0,
           scale: 0,
           xPercent: -50,
-          yPercent: 50,
+          yPercent: -50,
         });
 
-        const xSetter = gsap.quickSetter(meta, "x", "px");
-        const ySetter = gsap.quickSetter(meta, "y", "px");
-
-        thumbnail.addEventListener('mouseenter', () => {
-          gsap.to(meta, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.2
-          });
-        });
-
-        thumbnail.addEventListener('mousemove', (e) => {
-          const rect = thumbnail.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          
-          xSetter(x);
-          ySetter(y);
-        });
-
-        thumbnail.addEventListener('mouseleave', () => {
-          gsap.to(meta, {
-            opacity: 0,
-            scale: 0,
-            duration: 0.2
-          });
-        });
+        // Add new listeners
+        thumbnail.addEventListener('mouseenter', onMouseEnter);
+        thumbnail.addEventListener('mousemove', onMouseMove);
+        thumbnail.addEventListener('mouseleave', onMouseLeave);
       });
     }
 
     function initializeAnimations() {
-      // Kill any existing ScrollTriggers before reinitializing
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      initializeScrollAnimations();
-      // Delay hover animations slightly to ensure DOM is ready
-      setTimeout(initializeHoverAnimations, 100);
+      context.add(() => {
+        initializeScrollAnimations();
+        initializeHoverAnimations();
+      });
     }
 
-    // Initialize on first load
-    initializeAnimations();
-
-    // Initialize after Isotope layout
-    iso.on('layoutComplete', () => {
-      iso.layout(); // Refresh the layout
+    // Initialize after Isotope layout is complete
+    iso.once('layoutComplete', () => {
+      initializeAnimations();
     });
 
-    // Handle page transitions
     const pageLoadHandler = () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       iso.layout();
       initializeAnimations();
     };
@@ -117,6 +124,7 @@ const IsotopeGrid = ({ children }) => {
 
     return () => {
       document.removeEventListener('astro:page-load', pageLoadHandler);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       iso.destroy();
       context.revert();
     };

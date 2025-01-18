@@ -6,6 +6,6 @@ export default function Greeting({ messages, class: className = '' }) {
   const [greeting] = useState(randomMessage());
 
   return (
-    <h1 class={`max-w-[1024px] ${className}`}>{greeting}! I'm&nbsp;Tommy&nbsp;Parker —&nbsp;a&nbsp;freelance illustrator.</h1>
+    <h1 class={`max-w-[1000px] ${className}`}>{greeting}! I’m&nbsp;Tommy&nbsp;Parker —&nbsp;a&nbsp;freelance illustrator.</h1>
   );
 }

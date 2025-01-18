@@ -157,4 +157,13 @@
   .masonry-sizer {
     @apply hidden;
   }
+
+  /* Form */
+  input:placeholder-shown + input[type="submit"] {
+    @apply pointer-events-none text-ink-300 dark:text-ink-700;
+  }
+
+  input:not(:placeholder-shown) + input[type="submit"], &:-webkit-autofill + input[type="submit"] {
+    @apply cursor-pointer text-black dark:text-paper;
+  }
 }
