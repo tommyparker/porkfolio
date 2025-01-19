@@ -113,15 +113,15 @@
 
 
   /* Info */
-  .timeline {
+  .mytable {
     @apply col-start-1 md:col-start-3 col-span-full grid grid-cols-6 gap-0 md:gap-4;
   }
 
-  .timeline .year {
+  .mytable .small-header {
     @apply col-span-full sm:col-span-1 pt-2 first:pt-0 sm:pt-0;
   }
 
-  .timeline .note {
+  .mytable .note {
     @apply italic col-start-1 col-span-full sm:col-start-2 md:col-start-3;
   }
 
