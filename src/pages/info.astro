@@ -12,14 +12,16 @@ import porker from "../assets/Porker.jpg";
 const pageTitle = "Info";
 ---
 <Layout pageTitle={pageTitle}>
-	<Container class="min-h-[30svh] flex flex-col">
+	<Container class="mt-12 lg:mt-40">
 		<Greeting client:load messages={["Hey", "Howdy", "Hey there", "Yo", "Hello there", "Why hello"]} class="mt-auto" />
 	</Container>
     <Container>
         <Image src={porker} alt="Porker" class="rounded-xl w-full" loading={'eager'} />
     </Container>
     <Container>
-        <InfoBlock header="About" class="border-t-0">My work is both character and colour-driven, and whilst graphic, it retains a tactile warmth and quirkiness. I aim to show intimate moments in familiar worlds that have been featured in editorials, book covers, branding and advertising campaigns.</InfoBlock>
+        <InfoBlock header="About" class="border-t-0">
+            <p>My work is both character and colour-driven, and whilst graphic, it retains a tactile warmth and quirkiness. I aim to show intimate moments in familiar worlds that have been featured in editorials, book covers, branding and advertising campaigns.</p>
+        </InfoBlock>
     </Container>
     <Container>
         <InfoBlock header="Recognition">

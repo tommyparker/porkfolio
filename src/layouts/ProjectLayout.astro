@@ -8,20 +8,20 @@ const { frontmatter } = Astro.props;
 <Layout>
     <Container>
         <div>
-            <h6>About</h6>
+            <h4>About</h4>
             <slot/>
         </div>
         <div>
             <div >
-                <h6>Project</h6>
+                <h4>Project</h4>
                 <p>{frontmatter.title}</p>
             </div>
             <div>
-                <h6>Art direction</h6>
+                <h4>Art direction</h4>
                 <p>{frontmatter.artDirection}</p>
             </div>
             <div>
-                <h6>Client</h6>
+                <h4>Client</h4>
                 <p>{frontmatter.client}</p>
             </div>
         </div>
