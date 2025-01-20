@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Container from '../layouts/Container.astro';
 import Greeting from '../components/Greeting';
 import InfoBlock from '../components/InfoBlock.astro';
+import Note from '../components/Note.astro';
 import Clients from '../components/Clients.astro';
 import Mail from '../components/Mail.astro';
 
@@ -26,29 +27,22 @@ const pageTitle = "Info";
     <Container>
         <InfoBlock header="Recognition">
             <div class="mytable">
-                <p class="small-header">2024</p>
-                <p class="note">Society of Illustrators 67</p>
-
-                <p class="small-header">2023</p>
-                <p class="note">Society of Illustrators 66</p>
-                <p class="note">DI Cross-category Award: (Shortlisted)</p>
-                <p class="note">World Illustration Awards: Advertising (Shortlisted)</p>
-
-                <p class="small-header">2022</p>
-                <p class="note">World Illustration Awards: Advertising (Longlisted)</p>
-
-                <p class="small-header">2019</p>
-                <p class="note">World Illustration Awards: Experimental (Shortlisted)</p>
-
-                <p class="small-header">2018</p>
-                <p class="note">World Illustration Awards: Editorial (Shortlisted)</p>
+                <Note header="2024">Society of Illustrators 67</Note>
+                <Note header="2023">
+                    Society of Illustrators 66<br/>
+                    DI Cross-category Award: (Shortlisted)<br/>
+                    World Illustration Awards: Advertising (Shortlisted)
+                </Note>
+                <Note header="2022">World Illustration Awards: Advertising (Longlisted)</Note>
+                <Note header="2019">World Illustration Awards: Experimental (Shortlisted)</Note>
+                <Note header="2018">World Illustration Awards: Editorial (Shortlisted)</Note>
             </div>
         </InfoBlock>
     </Container>
     <Container>
         <InfoBlock header="Representation">
             <p>Synergy Art</p>
-            <p class="pb-2">(Worldwide)</p>
+            <p class="mb-2">(Worldwide)</p>
             <p><a href="https://synergyart.co.uk/artists/tommy-parker" target="_blank">synergyart.co.uk</a></p>
             <p><Mail email="luke@synergyart.co.uk" subject="Working with Tommy Parker ✏️"/></p>
             <p><a href="tel:+442077204222">+44 (0)20 7720 4222</a></p>

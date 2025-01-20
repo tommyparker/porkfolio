@@ -8,6 +8,10 @@ import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
   plugins: [svgr()],
-  integrations: [tailwind(), preact(), mdx(),]
+  integrations: [tailwind(), preact(), mdx({
+    components: {
+      'img': 'src/components/MdxImage.astro',
+    }
+  })],
   
 });

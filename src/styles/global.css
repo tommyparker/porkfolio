@@ -49,7 +49,7 @@
   }
 
   body, .prose p, .prose a {
-    @apply font-sans text-base lg:text-lg xl:text-xl 2xl:text-2xl leading-normal text-black dark:text-paper tracking-wide;
+    @apply font-sans text-base lg:text-lg xl:text-xl leading-normal text-black dark:text-paper tracking-wide;
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: 'dlig' on, 'ss02' on;
     text-rendering: optimizeLegibility;
@@ -74,11 +74,11 @@
   }
 
   h4, .prose h4 {
-    @apply text-base lg:text-lg xl:text-xl 2xl:text-2xl;
+    @apply text-base lg:text-lg xl:text-xl;
   }
 
   p, blockquote, ul, li, input {
-    @apply text-base lg:text-lg xl:text-xl 2xl:text-2xl leading-normal;
+    @apply text-base lg:text-lg xl:text-xl leading-normal;
   }
 
   a{
@@ -118,11 +118,11 @@
   }
 
   .mytable .small-header {
-    @apply col-span-full sm:col-span-1 pt-2 first:pt-0 sm:pt-0;
+    @apply font-bold col-span-full sm:col-span-1 mt-2 first:mt-0 sm:mt-0;
   }
 
   .mytable .note {
-    @apply italic col-start-1 col-span-full sm:col-start-2 md:col-start-3;
+    @apply col-start-1 col-span-full sm:col-start-2 md:col-start-3;
   }
 
 
@@ -155,6 +155,12 @@
     @apply invisible md:visible absolute pointer-events-none bg-white dark:bg-ink-800 px-4 py-2 z-20 top-0 left-0 rounded-full w-fit flex gap-2;
   }
 
+  @media (pointer: coarse) {
+    .project-meta {
+      @apply invisible;
+    }
+  }
+
   .project-meta > p {
     @apply text-sm lg:text-base leading-tight inline-flex text-black dark:text-paper;
   }
@@ -169,6 +175,11 @@
 
   .masonry-sizer {
     @apply hidden;
+  }
+
+  /* Single project */
+  .project-images img {
+    @apply w-full rounded-xl mb-4 last:mb-0;
   }
 
   /* Form */
