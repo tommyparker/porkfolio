@@ -2,18 +2,6 @@
 const { title, client, url, thumbnail, slug, index } = Astro.props;
 import { Image } from 'astro:assets';
 
-console.log('Project props:', {
-  title,
-  client,
-  url,
-  thumbnail: {
-    size: thumbnail?.size,
-    focus: thumbnail?.focus,
-    url: thumbnail?.url,
-    alt: thumbnail?.alt
-  }
-});
-
 // Fallback values
 const size = thumbnail?.size || 'small';
 const focus = thumbnail?.focus || 'center';

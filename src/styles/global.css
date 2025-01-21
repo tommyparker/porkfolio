@@ -128,7 +128,7 @@
 
   /* Projects */
   .projects-grid {
-    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-dense auto-rows-auto;
+    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-dense w-full h-auto auto-rows-fr;
   }
 
   .thumbnail {
@@ -136,15 +136,15 @@
   }
 
   .thumbnail.small {
-    @apply aspect-[16/9];
+    @apply aspect-[16/9] row-span-1;
   }
 
   .thumbnail.medium {
-    @apply aspect-[calc(16/4.5)+16px] row-span-2;
+    @apply aspect-[unset] row-span-2;
   }
 
   .thumbnail.large {
-    @apply aspect-[calc(16/3)+160px] row-span-3;
+    @apply aspect-[unset] row-span-3;
   }
 
   /* Focus positions */
