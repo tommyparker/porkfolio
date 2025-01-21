@@ -127,32 +127,53 @@
 
 
   /* Projects */
-  .thumbnail-container {
-    @apply relative;
-  }
-
-  .masonry-sizer, .thumbnail {
-    @apply w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.3333333333%-10.6666666667px)] xl:w-[calc(25%-12px)];
-  }
-
-  .gutter-sizer {
-    @apply w-4;
+  .projects-grid {
+    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-dense auto-rows-auto;
   }
 
   .thumbnail {
-    @apply break-inside-avoid mb-4 rounded-xl relative z-[1];
+    @apply relative rounded-xl col-span-1;
+  }
+
+  .thumbnail.small {
+    @apply aspect-[16/9];
+  }
+
+  .thumbnail.medium {
+    @apply aspect-[calc(16/4.5)+16px] row-span-2;
+  }
+
+  .thumbnail.large {
+    @apply aspect-[calc(16/3)+160px] row-span-3;
+  }
+
+  /* Focus positions */
+  .thumbnail.center img {
+    @apply object-center;
+  }
+
+  .thumbnail.top img {
+    @apply object-top;
+  }
+
+  .thumbnail.bottom img {
+    @apply object-bottom;
+  }
+
+  .thumbnail.left img {
+    @apply object-left;
+  }
+
+  .thumbnail.right img {
+    @apply object-right;
   }
 
   .thumbnail > img {
-    @apply rounded-xl group-hover:scale-[0.97] transition-all ease-in-out;
-  }
-
-  .thumbnail:hover {
-    @apply z-10;
+    @apply w-full h-full object-cover rounded-xl;
   }
 
   .project-meta {
-    @apply invisible md:visible absolute pointer-events-none bg-white dark:bg-ink-800 px-4 py-2 z-20 top-0 left-0 rounded-full w-fit flex gap-2;
+    @apply invisible md:visible absolute pointer-events-none bg-white dark:bg-ink-800 px-4 py-2 z-50 top-0 left-0 rounded-full w-fit flex gap-2;
   }
 
   @media (pointer: coarse) {
@@ -171,10 +192,6 @@
 
   .project-meta > .project-client {
     @apply font-normal;
-  }
-
-  .masonry-sizer {
-    @apply hidden;
   }
 
   /* Single project */

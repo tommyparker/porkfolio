@@ -15,6 +15,8 @@ const projectsCollection = defineCollection({
     thumbnail: z.object({
       url: image(),
       alt: z.string(),
+      size: z.enum(['small', 'medium', 'large']),
+      focus: z.enum(['center', 'top', 'bottom', 'left', 'right']).optional().default('center'),
     }),
   }),
 });

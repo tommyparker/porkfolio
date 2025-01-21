@@ -42,10 +42,19 @@ const change = {
       <slot/>
     </div>
     <Footer/>
-    <script>
-      import "../scripts/menu.js";
-    </script>
   </body>
+  <script>
+    import { gsap } from "../scripts/gsapConfig";
+    import "../scripts/menu.js";
+    
+    // Initial page load animation
+    gsap.to("body", {
+      autoAlpha: 1,
+      duration: 0.5,
+      ease: "power2.inOut"
+    });
+    
+  </script>
 </html>
 
 <style is:global>
