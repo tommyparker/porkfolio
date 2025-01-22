@@ -35,7 +35,7 @@ const logos = [
         <div class="col-span-full grid gap-0 sm:gap-2 md:gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {logos.map((logo) => (
                 <div
-                    class="w-full h-auto p-2 sm:p-4 lg:p-2 xl:p-4 fill-black dark:fill-paper"
+                    class="w-full h-auto p-2 sm:p-4 lg:p-2 xl:p-4 fill-black dark:fill-paper hover:scale-[0.9] transition-all duration-[0.2] ease-in-out"
                     aria-label={logo.alt}
                     set:html={logo.svg}
                 ></div>

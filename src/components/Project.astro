@@ -40,7 +40,7 @@ const loadingType = index < 8 ? "eager" : "lazy";
       { 
         delay: stagger(0.1),
         duration: 0.4,
-        easing: "circInOut"
+        easing: "easeInOut"
       }
     );
 
@@ -49,22 +49,19 @@ const loadingType = index < 8 ? "eager" : "lazy";
       animate(
         target,
         { opacity: [0, 1], y: [24, 0] },
-        { duration: 0.2, easing: "circInOut" }
+        { duration: 0.2, easing: "easeInOut" }
       );
     });
 
-    // Image scale on hover - moved to parent element
+    // Project meta on hover - moved to parent element
     hover(".thumbnail", (element) => {
-      const imageContainer = element.querySelector('.thumbnail-image-container');
       const meta = element.querySelector('.project-meta');
       
       // Animate both the scale and meta simultaneously
-      animate(imageContainer, { scale: 0.97 }, { duration: 0.2, easing: "circInOut" });
-      animate(meta, { opacity: 1 }, { duration: 0.1, easing: "circInOut" });
+      animate(meta, { opacity: 1 }, { duration: 0.1, easing: "easeInOut" });
 
       return () => {
-        animate(imageContainer, { scale: 1 }, { duration: 0.2, easing: "circInOut" });
-        animate(meta, { opacity: 0 }, { duration: 0.1, easing: "circInOut" });
+        animate(meta, { opacity: 0 }, { duration: 0.1, easing: "easeInOut" });
       };
     });
 
