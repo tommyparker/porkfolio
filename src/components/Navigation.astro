@@ -2,10 +2,10 @@
 import Container from '../layouts/Container.astro';
 
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+const currentPath = pathname.slice(1);
 ---
 
-<Container animate={false} class="navigation grid grid-cols-4 gap-4 justify-between w-full fixed z-50 bg-paper dark:bg-ink-950 py-4" id="top">
+<Container class="navigation grid grid-cols-4 gap-4 justify-between w-full fixed top-0 z-50 bg-paper dark:bg-ink-950 py-4" id="top">
     <h4 class="col-span-full sm:col-span-2"><a href="/">Tommy Parker</a></h4>
     <div class="col-span-full sm:col-span-2 flex gap-4 md:gap-8">
         <h4><a class={currentPath === "" ? "active" : ""}  href="/">Work</a></h4>
@@ -14,3 +14,75 @@ const currentPath = pathname.slice(1); // remove the first "/"
         <h4><a class={currentPath === "contact" ? "active" : ""}  href="#contact">Contact</a></h4>
     </div>
 </Container>
+
+<script>
+  import { animate } from "motion";
+
+  function init() {
+
+  const nav = document.querySelector("#top");
+  let lastScrollY = 0;
+  let animationInProgress = false;
+
+  function animateNav(hidden) {
+    if (!animationInProgress) {
+      animationInProgress = true;
+      
+      animate(
+        nav,
+        { 
+          transform: hidden ? "translateY(-100%)" : "translateY(0%)" 
+        },
+        { 
+          duration: 0.35,
+          easing: "ease-in-out",
+          onComplete: () => {
+            animationInProgress = false;
+          }
+        }
+      );
+    }
+  }
+
+  // Handle scroll
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > lastScrollY && currentScrollY > 150) {
+      // Scrolling down
+      animateNav(true);
+    } else {
+      // Scrolling up
+      animateNav(false);
+    }
+    
+    lastScrollY = currentScrollY;
+  }
+
+  // Show nav when hovering near top of screen
+  function handleMouseNearTop(e) {
+    if (e.clientY <= 50) {
+      animateNav(false);
+    }
+  }
+
+  // Show nav when focusing any element inside
+  nav.addEventListener('focusin', () => {
+    animateNav(false);
+  });
+
+  window.addEventListener('scroll', () => {
+    // Debounce scroll events for better performance
+    requestAnimationFrame(handleScroll);
+  });
+  
+  document.addEventListener('mousemove', handleMouseNearTop);
+
+  }
+
+  // Initialise on first load
+  init()
+
+  // Re-initialise after swapping pages
+  document.addEventListener("astro:after-swap", init)
+</script>

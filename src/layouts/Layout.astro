@@ -1,4 +1,5 @@
 ---
+
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -43,18 +44,6 @@ const change = {
     </div>
     <Footer/>
   </body>
-  <script>
-    import { gsap } from "../scripts/gsapConfig";
-    import "../scripts/menu.js";
-    
-    // Initial page load animation
-    gsap.to("body", {
-      autoAlpha: 1,
-      duration: 0.5,
-      ease: "power2.inOut"
-    });
-    
-  </script>
 </html>
 
 <style is:global>

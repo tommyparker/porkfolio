@@ -9,18 +9,83 @@ const focus = thumbnail?.focus || 'center';
 const loadingType = index < 8 ? "eager" : "lazy";
 ---
 
-<a href={url} class={`thumbnail ${size} ${focus} group block`}>
+<a 
+  href={url} 
+  class={`thumbnail ${size} ${focus} group block opacity-0`}
+  data-index={index}
+>
   <div class="thumbnail-image-container">
     <Image 
-    src={thumbnail.url} 
-    inferSize 
-    alt={thumbnail.alt} 
-    sizes="100vw" 
-    loading={loadingType}
+      src={thumbnail.url} 
+      inferSize 
+      alt={thumbnail.alt} 
+      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" 
+      loading={loadingType}
     />
   </div>
-    <div class="project-meta">
-      <p class="project-title">{title}</p>
-      <p class="project-client">{client}</p>
-    </div>
+  <div class="project-meta" style="position: fixed; pointer-events: none; opacity: 0; transform: translate(-50%, -50%);">
+    <p class="project-title">{title}</p>
+    <p class="project-client">{client}</p>
+  </div>
 </a>
+
+<script>
+  import { animate, stagger, inView, hover } from "motion";
+  
+  function init() {
+    // Initial stagger animation on load
+    animate(
+      ".thumbnail",
+      { opacity: [0, 1], y: [24, 0] },
+      { 
+        delay: stagger(0.1),
+        duration: 0.4,
+        easing: "circInOut"
+      }
+    );
+
+    // Scroll-triggered animation for thumbnails that come into view later
+    inView(".thumbnail", ({ target }) => {
+      animate(
+        target,
+        { opacity: [0, 1], y: [24, 0] },
+        { duration: 0.2, easing: "circInOut" }
+      );
+    });
+
+    // Image scale on hover - moved to parent element
+    hover(".thumbnail", (element) => {
+      const imageContainer = element.querySelector('.thumbnail-image-container');
+      const meta = element.querySelector('.project-meta');
+      
+      // Animate both the scale and meta simultaneously
+      animate(imageContainer, { scale: 0.97 }, { duration: 0.2, easing: "circInOut" });
+      animate(meta, { opacity: 1 }, { duration: 0.1, easing: "circInOut" });
+
+      return () => {
+        animate(imageContainer, { scale: 1 }, { duration: 0.2, easing: "circInOut" });
+        animate(meta, { opacity: 0 }, { duration: 0.1, easing: "circInOut" });
+      };
+    });
+
+    // Optimize cursor following by using transform instead of left/top
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    
+    thumbnails.forEach(thumbnail => {
+      const meta = thumbnail.querySelector('.project-meta');
+      
+      thumbnail.addEventListener('mousemove', (e) => {
+        // Use requestAnimationFrame for smoother updates
+        requestAnimationFrame(() => {
+          meta.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        });
+      });
+    });
+  }
+
+  // Initialise on first load
+  init()
+
+  // Re-initialise after swapping pages
+  document.addEventListener("astro:after-swap", init)
+</script>
