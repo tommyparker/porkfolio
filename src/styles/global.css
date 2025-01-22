@@ -128,11 +128,15 @@
 
   /* Projects */
   .projects-grid {
-    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-dense w-full h-auto auto-rows-fr;
+    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-dense w-full h-auto auto-rows-[1fr] grid-rows-[auto];
   }
 
   .thumbnail {
     @apply relative rounded-xl col-span-1;
+  }
+
+  .thumbnail-image-container {
+    @apply overflow-hidden w-full h-full block contain-size;
   }
 
   .thumbnail.small {
@@ -140,11 +144,15 @@
   }
 
   .thumbnail.medium {
-    @apply aspect-[unset] row-span-2;
+    @apply row-span-2 ;
   }
 
   .thumbnail.large {
-    @apply aspect-[unset] row-span-3;
+    @apply row-span-3;
+  }
+
+  .thumbnail img {
+    @apply w-full h-full object-cover rounded-xl;
   }
 
   /* Focus positions */
@@ -166,10 +174,6 @@
 
   .thumbnail.right img {
     @apply object-right;
-  }
-
-  .thumbnail > img {
-    @apply w-full h-full object-cover rounded-xl;
   }
 
   .project-meta {

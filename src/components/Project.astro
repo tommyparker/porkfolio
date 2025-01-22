@@ -10,13 +10,15 @@ const loadingType = index < 8 ? "eager" : "lazy";
 ---
 
 <a href={url} class={`thumbnail ${size} ${focus} group block`}>
-  <Image 
-  src={thumbnail.url} 
-  inferSize 
-  alt={thumbnail.alt} 
-  sizes="100vw" 
-  loading={loadingType}
-  />
+  <div class="thumbnail-image-container">
+    <Image 
+    src={thumbnail.url} 
+    inferSize 
+    alt={thumbnail.alt} 
+    sizes="100vw" 
+    loading={loadingType}
+    />
+  </div>
     <div class="project-meta">
       <p class="project-title">{title}</p>
       <p class="project-client">{client}</p>
