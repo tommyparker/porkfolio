@@ -207,7 +207,11 @@
   /* Project index */
 
   .index-single {
-    @apply grid gap-x-4 grid-cols-2 lg:grid-cols-4 py-2 border-b last:border-b-0 border-ink-50 dark:border-ink-900 rounded-xl hover:bg-ink-50 hover:dark:bg-ink-900 no-underline hover:px-4 transition-all duration-200 ease-in-out;
+    @apply grid gap-x-4 grid-cols-2 lg:grid-cols-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 hover:rounded-xl hover:bg-ink-50 hover:dark:bg-ink-900 no-underline hover:px-4 transition-all duration-200 ease-in-out;
+  }
+
+  .index-single:hover + .index-single {
+    @apply border-t-0;
   }
 
   .index-year {
