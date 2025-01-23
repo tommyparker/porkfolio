@@ -10,10 +10,10 @@ const currentPath = url.pathname.replace(/\/$/, '').split('/').pop() || '';
 <Container class="navigation grid grid-cols-4 gap-4 justify-between w-full fixed top-0 z-50 bg-paper dark:bg-ink-950 py-4">
     <h4 class="col-span-full sm:col-span-2"><a href="/">Tommy Parker</a></h4>
     <div class="col-span-full sm:col-span-2 flex gap-4 md:gap-8">
-        <h4><a class={currentPath === "" ? "active" : ""}  href="/">Work</a></h4>
-        <h4><a class={currentPath === "news" ? "active" : ""}  href="/news">News</a></h4>
-        <h4><a class={currentPath === "info" ? "active" : ""} href="/info">Info</a></h4>
-        <h4><a class={currentPath === "contact" ? "active" : ""}  href="#contact">Contact</a></h4>
+        <a class={currentPath === "" ? "active" : ""}  href="/">Work</a>
+        <a class={currentPath === "news" ? "active" : ""}  href="/news">News</a>
+        <a class={currentPath === "info" ? "active" : ""} href="/info">Info</a>
+        <a class={currentPath === "contact" ? "active" : ""}  href="#contact">Contact</a>
     </div>
 </Container>
 

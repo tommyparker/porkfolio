@@ -85,11 +85,11 @@
     @apply underline underline-offset-4 decoration-ink-200 dark:decoration-ink-800 hover:decoration-black hover:dark:decoration-paper;
   }
 
-  h4 a {
+  .navigation a {
     @apply no-underline;
   }
 
-  h4 a.active {
+  .navigation a.active {
     @apply text-ink-300 dark:text-ink-700;
   }
 
@@ -99,16 +99,6 @@
 
   .small-text {
     @apply text-sm lg:text-base leading-normal;
-  }
-
-
-  /* Nav */
-  .menu {
-    @apply h-svh hidden bg-blue rounded-xl;
-  }
-
-  .menu.open {
-    @apply visible block;
   }
 
 
@@ -128,7 +118,7 @@
 
   /* Projects */
   .projects-grid {
-    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-dense w-full h-auto auto-rows-[1fr] grid-rows-[auto];
+    @apply grid gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-dense w-full h-auto auto-rows-[1fr] grid-rows-[auto];
   }
 
   .thumbnail {
