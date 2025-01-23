@@ -13,12 +13,12 @@ const pageTitle = "Work";
 	<Container class="mt-12 lg:mt-40">
 		<Greeting client:load messages={["Hey", "Howdy", "Hey there", "Yo", "Hello there", "Why hello"]} class="mt-auto" />
 	</Container>
-	<div class="p-4">
+	<Container class="py-0">
 		<div class="projects-grid">
 			{
 				projects.map((project, index) => (
 					<Project 
-						url={`/projects/${project.slug}/`} 
+						url={`/projects/${project.slug.split('/').pop()}/`} 
 						title={project.data.title} 
 						client={project.data.client} 
 						thumbnail={project.data.thumbnail} 
@@ -27,5 +27,5 @@ const pageTitle = "Work";
 				))
 			}
 		</div>
-	</div>
+	</Container>
 </Layout>

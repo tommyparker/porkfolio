@@ -1,0 +1,8 @@
+---
+const { title, client, year, url, slug, index } = Astro.props;
+---
+<a href={url} class="index-single">
+    <p class="index-title">{title}</p>
+    <p class="index-client">{client.split('\n')[0].trim()}</p>
+    <p class="index-year">{year}</p>
+</a>

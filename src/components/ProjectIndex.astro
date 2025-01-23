@@ -1,0 +1,23 @@
+---
+import IndexSingle from "./IndexSingle.astro";
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+
+<div class="project-index">
+  <h4 class="mb-2">Other projects</h4>
+  <div class="project-index-list">
+    {
+        projects.map((project, index) => (
+            <IndexSingle 
+                url={`/projects/${project.slug.split('/').pop()}/`} 
+                title={project.data.title} 
+                client={project.data.client} 
+                year={project.data.year}
+                index={index}
+            />
+        ))
+    }
+  </div>
+</div>

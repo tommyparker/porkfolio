@@ -177,7 +177,7 @@
   }
 
   .project-meta {
-    @apply invisible md:visible absolute pointer-events-none bg-white dark:bg-ink-800 px-4 py-2 z-50 top-0 left-0 rounded-full w-fit flex gap-2;
+    @apply invisible md:visible fixed pointer-events-none opacity-0 translate-x-1/2 translate-y-1/2 bg-white dark:bg-ink-800 px-4 py-2 z-50 top-0 left-0 rounded-full w-fit flex gap-2;
   }
 
   @media (pointer: coarse) {
@@ -201,6 +201,25 @@
   /* Single project */
   .project-images img {
     @apply w-full rounded-xl mb-4 last:mb-0;
+  }
+
+
+  /* Project index */
+
+  .index-single {
+    @apply grid gap-x-4 grid-cols-2 lg:grid-cols-4 py-2 border-b last:border-b-0 border-ink-50 dark:border-ink-900 rounded-xl hover:bg-ink-50 hover:dark:bg-ink-900 no-underline hover:px-4 transition-all duration-200 ease-in-out;
+  }
+
+  .index-year {
+    @apply hidden sm:inline col-span-1 text-right;
+  }
+
+  .index-title {
+    @apply col-span-2;
+  }
+
+  .index-client {
+    @apply col-span-2 sm:col-span-1;
   }
 
   /* Form */

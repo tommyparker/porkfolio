@@ -23,9 +23,9 @@ const loadingType = index < 8 ? "eager" : "lazy";
       loading={loadingType}
     />
   </div>
-  <div class="project-meta" style="position: fixed; pointer-events: none; opacity: 0; transform: translate(-50%, -50%);">
+  <div class="project-meta">
     <p class="project-title">{title}</p>
-    <p class="project-client">{client}</p>
+    <p class="project-client">{client.split('\n')[0].trim()}</p>
   </div>
 </a>
 
@@ -74,7 +74,7 @@ const loadingType = index < 8 ? "eager" : "lazy";
       thumbnail.addEventListener('mousemove', (e) => {
         // Use requestAnimationFrame for smoother updates
         requestAnimationFrame(() => {
-          meta.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+          meta.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -100%)`;
         });
       });
     });

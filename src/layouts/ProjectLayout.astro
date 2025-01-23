@@ -1,34 +1,19 @@
 ---
 import Layout from './Layout.astro';
 import Container from '../layouts/Container.astro';
+import ProjectIndex from '../components/ProjectIndex.astro';
 
 const { frontmatter } = Astro.props;
 
 ---
-<Layout>
-    <Container class="grid grid-cols-4 gap-4">
+<Layout pageTitle={frontmatter.title}>
+    <Container class="grid grid-cols-4 gap-4 py-0 my-16">
         <div class="col-span-full col-start-1  md:col-span-2">
             <div class="col-span-2 mb-8">
-                <h4>{frontmatter.title}</h4>
+                <h4 class="mb-2">{frontmatter.title}</h4>
                 <p class="note">{frontmatter.description}</p>
             </div>
             <div class="mytable">
-
-                {frontmatter.artDirection && (
-                    <>
-                        <p class="small-header">Direction</p>
-                        <p class="note">
-                            {Array.isArray(frontmatter.artDirection) 
-                                ? frontmatter.artDirection.map((name: string) => (
-                                    <span class="block">{name}</span>
-                                  ))
-                                : frontmatter.artDirection.split('\n').map((name: string) => (
-                                    <span class="block">{name.trim()}</span>
-                                  ))
-                            }
-                        </p>
-                    </>
-                )}
 
                 {frontmatter.client && (
                     <>
@@ -50,10 +35,45 @@ const { frontmatter } = Astro.props;
                         </p>
                     </>
                 )}
+
+                {frontmatter.artDirection && (
+                    <>
+                        <p class="small-header">Direction</p>
+                        <p class="note">
+                            {Array.isArray(frontmatter.artDirection) 
+                                ? frontmatter.artDirection.map((name: string) => (
+                                    <span class="block">{name}</span>
+                                  ))
+                                : frontmatter.artDirection.split('\n').map((name: string) => (
+                                    <span class="block">{name.trim()}</span>
+                                  ))
+                            }
+                        </p>
+                    </>
+                )}
+
+                {frontmatter.year && (
+                    <>
+                        <p class="small-header">Year</p>
+                        <p class="note">
+                            {Array.isArray(frontmatter.year) 
+                                ? frontmatter.year.map((name: string) => (
+                                    <span class="block">{name}</span>
+                                ))
+                                : frontmatter.year.split('\n').map((name: string) => (
+                                    <span class="block">{name.trim()}</span>
+                                ))
+                            }
+                        </p>
+                    </>
+                )}
             </div>
         </div>
     </Container>
     <Container class="project-images">
         <slot/>
+    </Container>
+    <Container class="py-0 my-16">
+        <ProjectIndex />
     </Container>
 </Layout>
