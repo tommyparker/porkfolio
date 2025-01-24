@@ -12,13 +12,13 @@ const pageTitle = "News";
 
 <Layout pageTitle={pageTitle}>
 	<Container class="mt-12 lg:mt-40">
-		<div class="grid grid-cols-4 gap-2 md:gap-4">
-			<h1 class="col-start-1 col-span-full md:col-span-2">Drawn</h1>
-			<p class="col-start-1 col-span-1 pb-4 pt-4">A place for news from my studio, covering project and job updates, showing tidbits from behind the scenes, sharing inspiration from other places and people, and posting the occasional piece of writing.</p>
-			<div class="col-start-1 col-span-2">
-			<Subscribe/>
+		<h1 class="mb-4">Drawn</h1>
+		<div class="grid grid-cols-4 gap-4">
+			<div class="col-start-1 col-span-full md:col-span-2">
+				<p class="mb-4">A place for news from my studio, covering project and job updates, showing tidbits from behind the scenes, sharing inspiration from other places and people, and posting the occasional piece of writing.</p>
+				<Subscribe variant="page"/>
 			</div>
-			<div class="col-start-3 row-start-2">
+			<div class="col-start-1 md:col-start-3 col-span-full">
 				{
 					allPosts.map((post) => (
 					<BlogPost url={`/posts/${post.slug}/`} title={post.data.title} pubDate={post.data.pubDate.toString().slice(4,15)}/>
