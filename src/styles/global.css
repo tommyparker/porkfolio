@@ -51,7 +51,7 @@
   body, .prose p, .prose a {
     @apply font-sans text-base lg:text-lg xl:text-xl leading-normal text-black dark:text-paper tracking-wide;
     font-variant-numeric: lining-nums tabular-nums;
-    font-feature-settings: 'dlig' on, 'ss02' on;
+    font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
@@ -104,7 +104,7 @@
 
   /* Info */
   .mytable {
-    @apply col-start-1 md:col-start-3 col-span-full grid grid-cols-6 gap-0 md:gap-4;
+    @apply col-start-1 md:col-start-3 col-span-full grid grid-cols-6 gap-0 sm:gap-4;
   }
 
   .mytable .small-header {
@@ -201,7 +201,7 @@
   }
 
   .index-single:hover + .index-single {
-    @apply border-t-0;
+    @apply border-paper dark:border-ink-950;
   }
 
   .index-year {

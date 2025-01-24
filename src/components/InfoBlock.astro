@@ -3,8 +3,8 @@ const { header,
     class: additionalClasses,
  } = Astro.props;
 ---
-<div class={`grid grid-cols-4 gap-2 md:gap-4 border-t border-ink-50 dark:border-ink-900 pt-4 pb-8 ${additionalClasses}`}>
-    <h4 class="col-start-1 col-span-full md:col-span-2">{header}</h4>
+<div class={`grid grid-cols-4 gap-2 md:gap-4 border-t border-ink-50 dark:border-ink-900 py-4 ${additionalClasses}`}>
+    <h3 class="col-start-1 col-span-full md:col-span-2">{header}</h3>
     <div class="col-span-full col-start-1 md:col-start-3 md:col-span-2">
         <slot/>
     </div>
