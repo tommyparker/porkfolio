@@ -189,6 +189,7 @@
   }
 
   /* Single project */
+ 
   .project-images img {
     @apply w-full rounded-xl mb-4 last:mb-0;
   }
@@ -206,11 +207,11 @@
   }
 
   .sm-img {
-    @apply col-span-full md:col-span-2;
+    @apply col-span-full md:col-span-2 h-fit;
   }
 
   .md-img {
-    @apply col-span-full md:col-span-3;
+    @apply col-span-full md:col-span-3 h-fit;
   }
 
 
