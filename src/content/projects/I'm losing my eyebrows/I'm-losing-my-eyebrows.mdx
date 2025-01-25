@@ -5,15 +5,16 @@ year: '2024'
 client: HuffPost
 artDirection: Benjamin Currie
 thumbnail:
-  url: "TommyParker_DisappearingEyebrows.gif"
+  url: "TommyParker_DisappearingEyebrows.webp"
   alt: Disappearing eyebrows
   size: small
   focus: center
+  playbackId: "DVtflYgvjK02RvRQu8yqpe00pJ011K3DPM4YcPSZAm6yFM"
 ---
 
 <div class="video-container">
   <mux-player
-    playback-id="DVtflYgvjK02RvRQu8yqpe00pJ011K3DPM4YcPSZAm6yFM"
+    playback-id={frontmatter.thumbnail.playbackId}
     stream-type="on-demand"
     min-resolution="1080p"
     autoplay

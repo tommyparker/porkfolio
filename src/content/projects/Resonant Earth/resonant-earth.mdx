@@ -5,15 +5,16 @@ year: '2024'
 client: Quanta
 artDirection: Samuel Velasco
 thumbnail:
-  url: "TommyParker_Quanta_ResonantEarth.gif"
+  url: "TommyParker_Quanta_ResonantEarth.webp"
   alt: Resonant Earth
   size: small
   focus: center
+  playbackId: "9Vg4mDvYFPmmubjU8u9rwuLAOnvr00rqdeDUDK6GAqnY"
 ---
 
 <div class="video-container">
   <mux-player
-    playback-id="9Vg4mDvYFPmmubjU8u9rwuLAOnvr00rqdeDUDK6GAqnY"
+    playback-id={frontmatter.thumbnail.playbackId}
     stream-type="on-demand"
     min-resolution="1080p"
     autoplay

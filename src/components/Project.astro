@@ -14,14 +14,35 @@ const loadingType = index < 8 ? "eager" : "lazy";
   data-index={index}
 >
   <div class="thumbnail-image-container">
-    <Image 
-      client:load
-      src={thumbnail.url} 
-      inferSize 
-      alt={thumbnail.alt} 
-      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" 
-      loading={loadingType}
-    />
+    {thumbnail.playbackId ? (
+      <div class="relative w-full h-full">
+        <Image 
+          src={thumbnail.url}
+          inferSize
+          alt={thumbnail.alt}
+          class="absolute inset-0 w-full h-full object-cover"
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          loading={loadingType}
+        />
+        <mux-player
+          playback-id={thumbnail.playbackId}
+          stream-type="on-demand"
+          autoplay
+          muted
+          loop
+          playsinline
+          class="absolute inset-0 w-full h-full"
+        />
+      </div>
+    ) : (
+      <Image 
+        src={thumbnail.url}
+        inferSize
+        alt={thumbnail.alt}
+        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+        loading={loadingType}
+      />
+    )}
   </div>
   <div class="project-meta">
     <p class="project-title">{title}</p>

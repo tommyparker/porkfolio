@@ -18,6 +18,7 @@ const projectsCollection = defineCollection({
       alt: z.string(),
       size: z.enum(['small', 'medium', 'large']),
       focus: z.enum(['center', 'top', 'bottom', 'left', 'right']).optional().default('center'),
+      playbackId: z.string().optional(),
     }),
   }),
 });
