@@ -142,7 +142,7 @@
   }
 
   .thumbnail img {
-    @apply w-full h-full object-cover rounded-xl;
+    @apply w-full h-full object-cover;
   }
 
   /* Focus positions */
