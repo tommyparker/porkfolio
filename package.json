@@ -14,6 +14,7 @@
     "@astrojs/react": "^4.1.6",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/tailwind": "^5.1.4",
+    "@mux/mux-player": "^3.2.4",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "astro": "^5.1.2",

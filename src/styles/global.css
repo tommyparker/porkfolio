@@ -249,4 +249,21 @@
   .footer-copyright {
     @apply flex flex-col col-span-1 text-right;
   }
+
+  /* Mux video */
+  .video-container {
+    @apply rounded-xl overflow-hidden aspect-video;
+  }
+
+  mux-player {
+    --controls: none;
+    --media-object-fit: cover;
+  
+    inset: 0;
+    z-index: 0;
+  }
+  
+  mux-player::part(gesture-layer) {
+    display: none;
+  }
 }

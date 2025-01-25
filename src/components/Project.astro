@@ -2,7 +2,6 @@
 const { title, client, url, thumbnail, slug, index } = Astro.props;
 import { Image } from 'astro:assets';
 
-// Fallback values
 const size = thumbnail?.size || 'small';
 const focus = thumbnail?.focus || 'center';
 
@@ -16,6 +15,7 @@ const loadingType = index < 8 ? "eager" : "lazy";
 >
   <div class="thumbnail-image-container">
     <Image 
+      client:load
       src={thumbnail.url} 
       inferSize 
       alt={thumbnail.alt} 
