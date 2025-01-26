@@ -54,7 +54,7 @@ const currentPath = url.pathname.replace(/\/$/, '').split('/').pop() || '';
     function handleScroll() {
       const currentScrollY = window.scrollY;
       
-      if (currentScrollY > lastScrollY && currentScrollY > 0) {
+      if (currentScrollY > lastScrollY && currentScrollY > 96) {
         // Scrolling down
         animateNav(true);
       } else {
