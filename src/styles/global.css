@@ -49,7 +49,7 @@
   }
 
   body, .prose p, .prose a {
-    @apply font-sans text-base lg:text-lg xl:text-xl leading-normal text-black dark:text-paper tracking-wide text-balance;
+    @apply font-sans text-base lg:text-lg xl:text-xl leading-normal text-black dark:text-paper tracking-wide;
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
     text-rendering: optimizeLegibility;
@@ -76,9 +76,25 @@
   h4, .prose h4 {
     @apply text-base lg:text-lg xl:text-xl;
   }
-
+  
   p, blockquote, ul, li, input {
     @apply text-base lg:text-lg xl:text-xl leading-normal;
+  }
+  
+  .prose {
+    @apply !max-w-full md:!max-w-[72ch];
+  }
+
+  .prose h3 {
+    @apply mt-12 mb-2 md:mb-4;
+  }
+  
+  .prose p {
+    @apply mt-2 mb-4 first:mt-0;
+  }
+
+  .prose img {
+    @apply my-4 rounded-xl;
   }
 
   a{
@@ -203,7 +219,7 @@
   }
 
   .frame-img img {
-    @apply max-h-[fill-available] overflow-hidden object-contain md:rounded-none;
+    @apply max-h-[stretch] overflow-hidden object-contain md:rounded-none;
   }
 
   .sm-img {
@@ -214,15 +230,19 @@
     @apply col-span-full md:col-span-3 h-fit;
   }
 
+  .lg-img {
+    @apply col-span-full md:col-span-4 h-fit;
+  }
+
 
   /* Project index */
 
   .index-single {
-    @apply grid gap-x-4 grid-cols-2 lg:grid-cols-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 hover:rounded-xl hover:bg-ink-50 hover:dark:bg-ink-900 no-underline hover:px-4 transition-all duration-200 ease-in-out;
+    @apply grid gap-x-4 grid-cols-2 lg:grid-cols-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 no-underline lg:hover:px-4 transition-all duration-200 ease-in-out;
   }
 
   .index-single:hover + .index-single {
-    @apply border-paper dark:border-ink-950;
+    @apply lg:border-paper lg:dark:border-ink-950;
   }
 
   .index-year {
@@ -230,11 +250,24 @@
   }
 
   .index-title {
-    @apply col-span-2;
+    @apply font-bold lg:font-normal col-span-2;
   }
 
   .index-client {
     @apply col-span-2 sm:col-span-1;
+  }
+
+  /* News */
+  .blog-single {
+    @apply flex flex-row justify-between py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 no-underline lg:hover:px-4 transition-all duration-200 ease-in-out;
+  }
+
+  .blog-single:hover + .blog-single {
+    @apply lg:border-paper lg:dark:border-ink-950;
+  }
+
+  .blog-single a {
+    @apply no-underline;
   }
 
   /* Form */

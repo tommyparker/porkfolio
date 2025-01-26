@@ -2,6 +2,6 @@
 const { title, url, pubDate } = Astro.props;
 ---
 
-<div class="flex flex-col">
-    <h4><a href={url}>{title}</a></h4><p>{pubDate}</p>
+<div class="blog-single">
+    <p class="mr-4"><a href={url}>{title}</a></p><p>{pubDate}</p>
 </div>
