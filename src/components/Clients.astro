@@ -3,16 +3,23 @@ import Container from "../layouts/Container.astro";
 
 import Apple from '/src/assets/clients/Apple.svg?raw';
 import Audi from '/src/assets/clients/Audi.svg?raw';
+import BMW from '/src/assets/clients/BMW.svg?raw';
+import Economist from '/src/assets/clients/Economist.svg?raw';
 import Ferrero from '/src/assets/clients/Ferrero.svg?raw';
 import GQ from '/src/assets/clients/GQ.svg?raw';
 import Guardian from '/src/assets/clients/Guardian.svg?raw';
+import Harrys from '/src/assets/clients/Harrys.svg?raw';
 import HuffPost from '/src/assets/clients/HuffPost.svg?raw';
 import Mini from '/src/assets/clients/Mini.svg?raw';
+import Monocle from '/src/assets/clients/Monocle.svg?raw';
 import MrPorter from '/src/assets/clients/Mr_Porter.svg?raw';
 import Netflix from '/src/assets/clients/Netflix.svg?raw';
 import Penguin from '/src/assets/clients/Penguin.svg?raw';
 import Uber from '/src/assets/clients/Uber.svg?raw';
+import Variety from '/src/assets/clients/Variety.svg?raw';
 import Wired from '/src/assets/clients/Wired.svg?raw';
+import WSJ from '/src/assets/clients/WSJ.svg?raw';
+
 
 const logos = [
   { svg: Apple, alt: 'Apple' },
@@ -27,15 +34,28 @@ const logos = [
   { svg: Ferrero, alt: 'Ferrero' },
   { svg: Mini, alt: 'Mini' },
   { svg: MrPorter, alt: 'Mr Porter' },
+  { svg: Economist, alt: 'Economist' },
+  { svg: Monocle, alt: 'Monocle' },
+  { svg: Variety, alt: 'Variety' },
+  { svg: WSJ, alt: 'WSJ' },
+  { svg: BMW, alt: 'BMW' },
+  { svg: Harrys, alt: 'Harrys' },
 ];
 ---
 <Container class="pb-0">
     <div class="grid grid-cols-4 gap-2 md:gap-4 border-t border-ink-50 dark:border-ink-900 pt-4 pb-24">
         <h3 class="col-span-full">Selected clients</h3>
         <div class="col-span-full grid gap-0 sm:gap-2 md:gap-4 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-            {logos.map((logo) => (
+            {logos.map((logo, index) => (
                 <div
-                    class="w-full h-auto p-2 sm:p-4 lg:p-2 xl:p-4 fill-black dark:fill-paper hover:scale-[0.9] transition-all duration-[0.2] ease-in-out"
+                    class={`
+                        w-full h-auto p-2 sm:p-4 lg:p-2 xl:p-4 
+                        fill-black dark:fill-paper 
+                        hover:scale-[0.9] transition-all duration-[0.2] ease-in-out
+                        ${index >= 12 ? 'hidden md:block' : ''}
+                        ${index >= 16 ? 'sm:hidden lg:block' : ''}
+                        ${index >= 16 ? 'md:hidden xl:block' : ''}
+                    `}
                     aria-label={logo.alt}
                     set:html={logo.svg}
                 ></div>
