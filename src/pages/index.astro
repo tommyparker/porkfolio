@@ -6,8 +6,6 @@ import Project from '../components/Project.astro';
 import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects');
-// Shuffle the projects array
-const shuffledProjects = [...projects].sort(() => Math.random() - 0.5);
 const pageTitle = "Work";
 ---
 
@@ -22,7 +20,7 @@ const pageTitle = "Work";
 	<Container class="py-0">
 		<div class="projects-grid">
 			{
-				shuffledProjects.map((project, index) => (
+				projects.map((project, index) => (
 					<Project 
 						url={`/projects/${project.slug.split('/').pop()}/`} 
 						title={project.data.title} 
