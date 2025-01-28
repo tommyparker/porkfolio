@@ -299,4 +299,22 @@
   mux-player::part(gesture-layer) {
     display: none;
   }
+
+  /* Add these new custom properties near the top of @layer base */
+  :root {
+    --nav-height: 0px;
+    --nav-offset: var(--nav-height);
+  }
+
+  /* Add these new utility classes */
+  .sticky-below-nav {
+    @apply sticky;
+    top: calc(var(--nav-offset) + 1rem);
+    transition: top 0.35s ease-in-out;
+  }
+
+  .sticky-default {
+    @apply sticky;
+    top: 0;
+  }
 }

@@ -34,6 +34,9 @@ const currentPath = url.pathname.replace(/\/$/, '').split('/').pop() || '';
       if (!animationInProgress) {
         animationInProgress = true;
         
+        // Update the nav-offset when hiding/showing navigation
+        document.documentElement.style.setProperty('--nav-offset', hidden ? '0px' : `${nav.offsetHeight}px`);
+        
         animate(
           nav,
           { 
