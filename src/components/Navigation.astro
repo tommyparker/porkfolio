@@ -3,15 +3,19 @@ import Container from '../layouts/Container.astro';
 
 // Get the full URL first
 const url = new URL(Astro.request.url);
-// Remove any trailing slashes and then get the pathname
-const currentPath = url.pathname.replace(/\/$/, '').split('/').pop() || '';
+// Remove any trailing slashes and then get all path segments
+const pathSegments = url.pathname.replace(/\/$/, '').split('/');
+const currentPath = pathSegments.pop() || '';
+// Check if we're in a project or post by looking at the path segments
+const isProjectPage = pathSegments.includes('projects');
+const isNewsPost = pathSegments.includes('posts');
 ---
 
 <Container class="navigation grid grid-cols-4 gap-4 justify-between w-full fixed top-0 z-50 bg-paper dark:bg-ink-950 pb-0">
-    <h4 class="col-span-full sm:col-span-2"><a href="/">Tommy Parker</a></h4>
+    <h4 class="col-span-full sm:col-span-2"><a href="/" class="logo">Tommy Parker</a></h4>
     <div class="col-span-full sm:col-span-2 flex gap-4 md:gap-8">
-        <a class={currentPath === "" ? "active" : ""}  href="/">Work</a>
-        <a class={currentPath === "news" ? "active" : ""}  href="/news">News</a>
+        <a class={currentPath === "" || isProjectPage ? "active" : ""}  href="/">Work</a>
+        <a class={currentPath === "news" || isNewsPost ? "active" : ""}  href="/news">News</a>
         <a class={currentPath === "info" ? "active" : ""} href="/info">Info</a>
         <a class={currentPath === "contact" ? "active" : ""}  href="#contact">Contact</a>
     </div>

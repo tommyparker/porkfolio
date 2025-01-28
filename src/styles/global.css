@@ -102,11 +102,20 @@
   }
 
   .navigation a {
-    @apply no-underline;
+    @apply no-underline relative;
   }
 
-  .navigation a.active {
-    @apply text-ink-300 dark:text-ink-700;
+  .navigation a:after {
+    @apply content-[''] absolute inline-block h-[1px] -bottom-[17px] left-0 right-0 bg-black dark:bg-paper;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.2s ease-in-out;
+  }  
+
+  .navigation a.active:after,
+  .navigation a:hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 
   input {
@@ -314,7 +323,6 @@
   }
 
   .sticky-default {
-    @apply sticky;
-    top: 0;
+    @apply sticky top-0;
   }
 }
