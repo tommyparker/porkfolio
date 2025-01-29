@@ -31,6 +31,9 @@ export default {
       center: true,
     },
     extend: {
+      screens: {
+        'xs': '420px',
+      },
       transitionProperty: {
         'height': 'height',
       }

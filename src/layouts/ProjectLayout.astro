@@ -2,11 +2,13 @@
 import Layout from './Layout.astro';
 import Container from '../layouts/Container.astro';
 import ProjectIndex from '../components/ProjectIndex.astro';
+import Exit from '../components/Exit.astro';
 
 const { frontmatter } = Astro.props;
 
 ---
 <Layout pageTitle={frontmatter.title}>
+    <Exit href="/" />
     <Container class="grid grid-cols-4 gap-x-4 py-0 mt-4 mb-12">
         <div class="col-span-full col-start-1  md:col-span-2">
             <div class="col-span-2">

@@ -101,43 +101,56 @@
     @apply underline underline-offset-4 decoration-1 decoration-ink-200 dark:decoration-ink-800 hover:decoration-black hover:dark:decoration-paper;
   }
 
-  .navigation a {
+  .logo {
+    @apply no-underline;
+  }
+
+  .menu a {
     @apply no-underline relative;
   }
 
-  .navigation a:after {
+  .menu a:after {
     @apply content-[''] absolute inline-block h-[1px] -bottom-[17px] left-0 right-0 bg-black dark:bg-paper;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.2s ease-in-out;
   }  
 
-  .navigation a.active:after,
-  .navigation a:hover:after {
+  .menu a.active:after,
+  .menu a:hover:after {
     transform: scaleX(1);
     transform-origin: left;
   }
 
   input {
-    @apply leading-tight inline-block;
+    @apply leading-tight inline-block h-10 lg:h-11;
   }
 
   .small-text {
     @apply text-sm lg:text-base leading-normal;
   }
 
+  /* Exit */
+
+  .exit {
+    @apply fixed flex items-center justify-center bottom-4 left-4 w-10 h-10 lg:w-11 lg:h-11 z-50 bg-white dark:bg-ink-800 hover:scale-110 shadow-xl rounded-full transition-all duration-200 ease-in-out;
+  }
+
+  .exit a {
+    @apply text-center leading-none no-underline;
+  }
 
   /* Info */
   .mytable {
-    @apply col-start-1 md:col-start-3 col-span-full grid grid-cols-8 gap-0 sm:gap-4;
+    @apply grid grid-cols-8 col-start-1 md:col-start-3 col-span-full  gap-0 xs:gap-4;
   }
 
   .mytable .small-header {
-    @apply font-bold col-span-full sm:col-span-1 mt-2 first:mt-0 sm:mt-0;
+    @apply font-bold col-span-full xs:col-span-1 mt-4 first:mt-0 xs:mt-0;
   }
 
   .mytable .note {
-    @apply col-start-1 col-span-full sm:col-start-3;
+    @apply col-start-1 col-span-full xs:col-start-3;
   }
 
 
@@ -224,11 +237,15 @@
   }
 
   .frame-img {
-    @apply col-span-full md:p-12 bg-ink-50 dark:bg-ink-900 max-h-[calc(100svh-32px)] rounded-xl;
+    @apply col-span-full p-0 md:p-10 lg:p-11 bg-ink-50 dark:bg-ink-900 rounded-xl flex items-center justify-center object-contain max-h-[calc(100svh-1rem)];
+  }
+
+  .frame-img p {
+    @apply m-0 h-full w-full flex items-center justify-center;
   }
 
   .frame-img img {
-    @apply max-h-[stretch] overflow-hidden object-contain md:rounded-none;
+    @apply max-h-full w-auto h-auto object-contain md:rounded-none;
   }
 
   .sm-img {
