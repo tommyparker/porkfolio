@@ -14,9 +14,9 @@ const containerClass = `p-4 ${animate ? 'animate-fade-up' : ''} ${additionalClas
 <style>
   .animate-fade-up {
     opacity: 0;
-    transform: translate3d(0, 12px, 0);
+    transform: translate3d(0, 16px, 0);
     transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-    transition-delay: 0.2s;
+    transition-delay: 0.3s;
   }
 
   .animate-fade-up.show {
@@ -34,12 +34,11 @@ const containerClass = `p-4 ${animate ? 'animate-fade-up' : ''} ${additionalClas
         }
       });
     }, {
-      threshold: 0.1
+      threshold: 0,
+      rootMargin: '-100px 0px'
     });
 
-    // Observe all animate-fade-up elements
     document.querySelectorAll('.animate-fade-up').forEach((element) => {
-      // Remove 'show' class first to reset the animation
       element.classList.remove('show');
       observer.observe(element);
     });

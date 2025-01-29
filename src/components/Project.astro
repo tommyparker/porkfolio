@@ -58,9 +58,9 @@ const loadingType = index < 8 ? "eager" : "lazy";
     // Initial stagger animation on load
     animate(
       ".thumbnail",
-      { opacity: [0, 1], y: [24, 0] },
+      { opacity: [0, 1], y: [16, 0] },
       { 
-        delay: stagger(0.1),
+        delay: stagger(0.15),
         duration: 0.4,
         easing: "easeInOut"
       }
@@ -70,8 +70,8 @@ const loadingType = index < 8 ? "eager" : "lazy";
     inView(".thumbnail", ({ target }) => {
       animate(
         target,
-        { opacity: [0, 1], y: [24, 0] },
-        { duration: 0.2, easing: "easeInOut" }
+        { opacity: [0, 15], y: [16, 0] },
+        { duration: 0.4, easing: "easeInOut" }
       );
     });
 
@@ -80,10 +80,10 @@ const loadingType = index < 8 ? "eager" : "lazy";
       const meta = element.querySelector('.project-meta');
       
       // Animate both the scale and meta simultaneously
-      animate(meta, { opacity: 1 }, { duration: 0.1, easing: "easeInOut" });
+      animate(meta, { opacity: 1 }, { duration: 0.15, easing: "easeInOut" });
 
       return () => {
-        animate(meta, { opacity: 0 }, { duration: 0.1, easing: "easeInOut" });
+        animate(meta, { opacity: 0 }, { duration: 0.15, easing: "easeInOut" });
       };
     });
 

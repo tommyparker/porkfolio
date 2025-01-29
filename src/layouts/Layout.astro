@@ -46,6 +46,9 @@ const change = {
       <slot/>
     </div>
     <Footer/>
+    <div transition:animate={change} class="exit-container">
+      <slot name="fixed" />
+    </div>
   </body>
   <script>
     import '@mux/mux-player';

@@ -126,16 +126,35 @@
   /* Exit */
 
   .exit {
-    @apply fixed flex items-center justify-center bottom-4 left-4 w-10 h-10 lg:w-11 lg:h-11 z-50 bg-white dark:bg-ink-800 hover:scale-110 shadow-xl rounded-full transition-all duration-200 ease-in-out;
+    @apply fixed flex items-center justify-center bottom-4 left-4 w-10 h-10 lg:w-11 lg:h-11 bg-white dark:bg-ink-800 hover:scale-110 shadow-xl rounded-full transition-all duration-200 ease-in-out text-center leading-none no-underline z-[100];
+    animation: slideUp 0.35s ease-in-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    transform: translateY(100%);
   }
 
-  .exit a {
-    @apply text-center leading-none no-underline;
+  .exit-container {
+    @apply fixed bottom-0 left-0 w-auto h-auto pointer-events-none z-[200];
+  }
+
+  .exit-container > * {
+    @apply pointer-events-auto;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   /* Info */
   .mytable {
-    @apply grid grid-cols-8 col-start-1 md:col-start-3 col-span-full  gap-0 xs:gap-4;
+    @apply grid grid-cols-8 col-start-1 md:col-start-3 col-span-full gap-0 xs:gap-4;
   }
 
   .mytable .small-header {

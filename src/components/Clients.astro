@@ -49,13 +49,14 @@ const logos = [
             {logos.map((logo, index) => (
                 <div
                     class={`
-                        w-full h-auto p-2 sm:p-4 lg:p-2 xl:p-4 
+                        fade-in-logo w-full h-auto p-2 sm:p-4 lg:p-2 xl:p-4 
                         fill-black dark:fill-paper 
                         hover:scale-[0.9] transition-all duration-[0.2] ease-in-out
                         ${index >= 12 ? 'hidden md:block' : ''}
                         ${index >= 16 ? 'sm:hidden lg:block' : ''}
                         ${index >= 16 ? 'md:hidden xl:block' : ''}
                     `}
+                    style={`--stagger: ${index * 0.1}s`}
                     aria-label={logo.alt}
                     set:html={logo.svg}
                 ></div>
@@ -63,3 +64,43 @@ const logos = [
         </div>
     </div>
 </Container>
+
+<style>
+    .fade-in-logo {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        transition-delay: var(--stagger, 0s);
+    }
+
+    .fade-in-logo.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    function initLogoObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, {
+            threshold: 0,
+            rootMargin: '-50px 0px'
+        });
+
+        document.querySelectorAll('.fade-in-logo').forEach((element) => {
+            element.classList.remove('show');
+            observer.observe(element);
+        });
+    }
+
+    // Initialize on first load
+    initLogoObserver();
+
+    // Reinitialize after view transitions
+    document.addEventListener('astro:after-swap', initLogoObserver);
+</script>
