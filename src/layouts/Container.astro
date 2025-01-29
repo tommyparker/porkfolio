@@ -5,8 +5,49 @@ const {
   animate = true
 } = Astro.props;
 
-const containerClass = `p-4 ${animate ? 'animate-container' : ''} ${additionalClasses}`;
+const containerClass = `p-4 ${animate ? 'animate-fade-up' : ''} ${additionalClasses}`;
 ---
 <div id={`${additionalId}`} class={containerClass}>
     <slot />
 </div>
+
+<style>
+  .animate-fade-up {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transition-delay: 0.2s;
+  }
+
+  .animate-fade-up.show {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+</style>
+
+<script>
+  function initObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    // Observe all animate-fade-up elements
+    document.querySelectorAll('.animate-fade-up').forEach((element) => {
+      // Remove 'show' class first to reset the animation
+      element.classList.remove('show');
+      observer.observe(element);
+    });
+  }
+
+  // Initialize on first load
+  initObserver();
+
+  // Reinitialize after view transitions
+  document.addEventListener('astro:after-swap', initObserver);
+</script>
