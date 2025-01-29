@@ -134,14 +134,16 @@
   }
 
   .exit-container {
-    @apply fixed bottom-0 left-0 w-auto h-auto pointer-events-none z-[200] translate-z-0;
+    @apply fixed bottom-0 left-0 w-auto h-auto pointer-events-none z-[200];
+    transform: translateZ(0);
     -webkit-transform: translateZ(0); /* iOS specific */
     backface-visibility: hidden; /* Help with iOS rendering */
     -webkit-backface-visibility: hidden;
   }
 
   footer {
-    @apply relative z-[100] translate-z-0;
+    @apply relative z-[100];
+    transform: translateZ(0);
     -webkit-transform: translateZ(0);
   }
 
