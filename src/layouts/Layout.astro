@@ -4,30 +4,32 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
+
 const { pageTitle } = Astro.props;
 
 const anim = {
   old: {
-    name: 'change',
-    duration: '0.3s',
-    easing: 'cubic-bezier(0.65,0,0.35,1)',
-    direction: 'reverse',
+    name: 'fadeOut',
+    duration: '0.15s',
+    easing: 'ease-in-out',
+    fillMode: 'forwards',
   },
   new: {
-    name: 'change',
-    delay: '0.35s',
-    duration: '0.3s',
-    easing: 'cubic-bezier(0.65,0,0.35,1)',
-  },
+    name: 'fadeIn',
+    delay: '0.15s',
+    duration: '0.15s',
+    easing: 'ease-in-out',
+    fillMode: 'backwards',
+  }
 };
 
-const change = {
+const transitionAnimation = {
   forwards: anim,
   backwards: anim,
 };
 
 ---
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" transition:animate={transitionAnimation}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -41,12 +43,12 @@ const change = {
     <ClientRouter />
   </head>
   <body class="bg-paper dark:bg-ink-950">
-    <Navigation/>
-    <div transition:animate={change} class="pt-[var(--nav-height)]">
+    <Navigation transition:persist/>
+    <div class="pt-[var(--nav-height)]">
       <slot/>
     </div>
     <Footer/>
-    <div transition:animate={change} class="exit-container">
+    <div class="exit-container">
       <slot name="fixed" />
     </div>
   </body>
@@ -56,16 +58,6 @@ const change = {
 </html>
 
 <style is:global>
-  @keyframes change {
-    0% {
-      opacity: 0;
-    }
-    
-    100% {
-      opacity: 1;
-    }
-  }
-
   :root {
     --nav-height: 0px;
   }
