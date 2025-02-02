@@ -6,7 +6,7 @@ const { frontmatter } = Astro.props;
 ---
 <Layout>
     <Container>
-      <div class="grid grid-cols-4 gap-2 md:gap-4">
+      <div class="grid grid-cols-4 gap-2 md:gap-4 mb-24">
         <div class="col-start-1 col-span-full md:col-span-2 md:sticky-below-nav h-fit">
           <h1 class="mb-2 md:mb-4 mt-12 md:mt-0 text-balance">{frontmatter.title}</h1>  
           <p class="mb-4">{frontmatter.pubDate.toString().slice(4,15)}</p>

@@ -14,10 +14,10 @@ const isNewsPost = pathSegments.includes('posts');
 <Container animate={false} class="navigation grid grid-cols-4 gap-4 justify-between w-full fixed top-0 z-50 bg-paper dark:bg-ink-950 pb-0">
     <h4 class="col-span-full sm:col-span-2"><a href="/" class="logo">Tommy Parker</a></h4>
     <div class="menu col-span-full sm:col-span-2 flex gap-4 md:gap-8">
-        <a class={currentPath === "" || isProjectPage ? "active" : ""}  href="/">Work</a>
-        <a class={currentPath === "news" || isNewsPost ? "active" : ""}  href="/news">News</a>
-        <a class={currentPath === "info" ? "active" : ""} href="/info">Info</a>
-        <a class={currentPath === "contact" ? "active" : ""}  href="#contact">Contact</a>
+        <a class={`${currentPath === "" || isProjectPage ? "active" : ""} after-blue`} href="/">Work</a>
+        <a class={`${currentPath === "news" || isNewsPost ? "active" : ""} after-red`} href="/news">News</a>
+        <a class={`${currentPath === "info" ? "active" : ""} after-yellow`} href="/info">Info</a>
+        <a class={`${currentPath === "contact" ? "active" : ""} after-pink`} href="#contact">Contact</a>
     </div>
     <div class="block h-[1px] bg-ink-50 dark:bg-ink-900 w-full col-span-full bottom-0"></div>
 </Container>

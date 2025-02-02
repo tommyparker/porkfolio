@@ -9,19 +9,19 @@ const currentYear = new Date().getFullYear();
 ---
 
 <Container id="contact" class="pb-0">
-    <footer class="flex flex-col gap-4 p-4 min-h-[calc(100svh-32px)] rounded-xl bg-ink-50 dark:bg-ink-900">
+    <footer class="flex flex-col gap-4 p-4 min-h-[calc(100svh-2rem)] rounded-xl bg-ink-50 dark:bg-ink-900">
         <!-- Contact section -->
         <div class="space-y-8">
-            <h1 class="max-w-[1024px] 2xl:max-w-[1280px]">If you’re interested in collaborating, drop me a&nbsp;message.</h1>
+            <h1 class="text-balance max-w-[700px]">Like what you see? Drop me a message.</h1>
             
-            <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
                 <div>
                     <h4>For work enquiries</h4>
                     <p><Mail email="tommy@synergyart.co.uk" subject="Working with Tommy Parker ✏️"/></p>
                 </div>
                 <div class="xl:col-span-3">
                     <h4>For everything else</h4>
-                    <p><Mail email="me@tommyparker.co.uk" subject="Hey there! 👋"/></p>
+                    <p><Mail email="me@tommyparker.co.uk" subject="Hey there! 👋" class="hover:!decoration-red"/></p>
                 </div>
             </div>
         </div>
@@ -39,11 +39,11 @@ const currentYear = new Date().getFullYear();
             </div>
             <div class="flex flex-col col-span-1">
                 <h4>Follow</h4>
-                <p><Social platform="Instagram" username="t_mmyparker" /></p>
-                <p><Social platform="Behance" username="t_mmyparker" /></p>
+                <p><Social platform="Instagram" username="t_mmyparker" class="hover:!decoration-yellow"/></p>
+                <p><Social platform="Behance" username="t_mmyparker" class="hover:!decoration-pink"/></p>
             </div>
             <div class="footer-copyright">
-                <p>©</p>
+                <p class="animate-pulse">©</p>
                 <p>Tommy Parker</p>
                 <p>2014 — {currentYear}</p>
             </div>

@@ -3,7 +3,6 @@ const { title, url, pubDate } = Astro.props;
 ---
 
 <a class="blog-single" href={url}>
-<div>
-    <p class="mr-4">{title}</p><p>{pubDate}</p>
-</div>
+    <p class="blog-title truncate">{title}</p>
+    <p class="blog-date truncate">{pubDate}</p>
 </a>

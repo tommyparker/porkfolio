@@ -20,6 +20,7 @@ const projectsCollection = defineCollection({
       focus: z.enum(['center', 'top', 'bottom', 'left', 'right']).optional().default('center'),
       playbackId: z.string().optional(),
     }),
+    draft: z.boolean().default(false),
   }),
 });
 

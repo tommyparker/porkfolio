@@ -2,11 +2,13 @@
 import IndexSingle from "./IndexSingle.astro";
 import { getCollection } from 'astro:content';
 
-const projects = await getCollection('projects');
+const projects = await getCollection('projects', ({ data }) => {
+	return data.draft !== true;
+});
 ---
 
 <div class="project-index">
-  <h3 class="mb-2">Other projects</h3>
+  <h3 class="mb-2">Project index</h3>
   <div class="project-index-list">
     {
         projects.map((project, index) => (

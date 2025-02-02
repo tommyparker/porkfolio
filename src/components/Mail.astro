@@ -1,4 +1,4 @@
 ---
-const { email, subject } = Astro.props;
+const { email, subject, class: additionalClasses, } = Astro.props;
 ---
-<a href={`mailto:${email}?subject=${subject}`} target="_blank">{email}</a>
+<a href={`mailto:${email}?subject=${subject}`} target="_blank" class={`${additionalClasses}`}>{email}</a>

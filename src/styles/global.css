@@ -90,8 +90,25 @@
     @apply my-4 rounded-xl;
   }
 
-  a{
-    @apply underline underline-offset-4 decoration-1 decoration-ink-200 dark:decoration-ink-800 hover:decoration-black hover:dark:decoration-paper;
+  a {
+    @apply underline underline-offset-4 decoration-1 decoration-ink-200 dark:decoration-ink-800;
+  }
+
+  /* Random colored underlines on hover using nth-of-type */
+  a:nth-of-type(4n+1):hover {
+    @apply decoration-blue;
+  }
+
+  a:nth-of-type(4n+2):hover {
+    @apply decoration-red;
+  }
+
+  a:nth-of-type(4n+3):hover {
+    @apply decoration-yellow;
+  }
+
+  a:nth-of-type(4n):hover {
+    @apply decoration-pink;
   }
 
   .logo {
@@ -115,6 +132,21 @@
     transform-origin: left;
   }
 
+  a.after-blue:after {
+    @apply bg-blue;
+  }
+
+  a.after-yellow:after {
+    @apply bg-yellow;
+  }
+
+  a.after-red:after {
+    @apply bg-red;
+  }
+
+  a.after-pink:after {
+    @apply bg-pink;
+  }
   input {
     @apply leading-tight inline-block h-10 lg:h-11;
   }
@@ -286,7 +318,7 @@
   /* Project index */
 
   .index-single {
-    @apply grid gap-x-4 grid-cols-2 lg:grid-cols-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 no-underline lg:hover:px-4 transition-all duration-200 ease-in-out;
+    @apply grid gap-x-4 grid-cols-2 md:grid-cols-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 no-underline lg:hover:px-4 transition-all duration-200 ease-in-out;
   }
 
   .index-single:hover + .index-single {
@@ -294,28 +326,28 @@
   }
 
   .index-year {
-    @apply hidden sm:inline col-span-1 text-right;
+    @apply hidden md:inline col-span-1 text-right;
   }
 
   .index-title {
-    @apply font-bold lg:font-normal col-span-2;
+    @apply font-normal col-span-1 md:col-span-2 truncate;
   }
 
   .index-client {
-    @apply col-span-2 sm:col-span-1;
+    @apply col-span-1 truncate;
   }
 
   /* News */
-  .blog-single > div {
-    @apply flex flex-row justify-between py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 no-underline lg:hover:px-4 transition-all duration-200 ease-in-out;
+  .blog-single {
+    @apply flex flex-row justify-between gap-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 lg:hover:px-4 transition-all duration-200 ease-in-out no-underline;
   }
 
-  .blog-single > div:hover + .blog-single > div {
+  .blog-single:hover + .blog-single {
     @apply lg:border-paper lg:dark:border-ink-950;
   }
 
-  .blog-single {
-    @apply no-underline;
+  .blog-date {
+    @apply max-[365px]:hidden;
   }
 
   /* Form */

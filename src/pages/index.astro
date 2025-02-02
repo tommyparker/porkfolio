@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Container from '../layouts/Container.astro';
-import Greeting from '../components/Greeting';
 import Project from '../components/Project.astro';
 import { getCollection } from 'astro:content';
 
-const projects = await getCollection('projects');
+const projects = await getCollection('projects', ({ data }) => {
+	return data.draft !== true;
+});
 const pageTitle = "Work";
 ---
 
@@ -17,6 +18,7 @@ const pageTitle = "Work";
 			<em>Illustration</em>
 		</h1>
 	</Container>
+	
 	<Container class="py-0" animate={false}>
 		<div class="projects-grid">
 			{
