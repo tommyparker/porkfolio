@@ -1,8 +1,60 @@
 ---
-const { title, client, year, url, slug, index } = Astro.props;
+import { Image } from 'astro:assets';
+
+const { title, client, year, url, thumbnail, slug, index } = Astro.props;
 ---
 <a href={url} class="index-single">
     <p class="index-title">{title}</p>
     <p class="index-client">{client.split('\n')[0].trim()}</p>
     <p class="index-year">{year}</p>
+    <div class="index-img">
+        <Image 
+        src={thumbnail.url}
+        inferSize
+        alt={thumbnail.alt}
+        sizes="(max-width: 1024px) 33vw"
+        class="w-full h-full object-cover"
+      />
+    </div>
 </a>
+
+<script>
+    import { animate, hover } from "motion";
+    
+    function init() {
+      // Index-img on hover
+      hover(".index-single", (element) => {
+        const singleImg = element.querySelector('.index-img');
+        
+        // Show and animate the image
+        animate(singleImg, { opacity: 1 }, { duration: 0.15, easing: "easeInOut" });
+
+        return () => {
+          animate(singleImg, { opacity: 0 }, { duration: 0.15, easing: "easeInOut" });
+        };
+      });
+
+      // Optimize cursor following
+      const indexSingles = document.querySelectorAll('.index-single');
+      
+      indexSingles.forEach(indexSingle => {
+        const singleImg = indexSingle.querySelector('.index-img');
+        
+        indexSingle.addEventListener('mousemove', (e) => {
+          const rect = indexSingle.getBoundingClientRect();
+          const x = e.clientX - rect.left; // Get position relative to element
+          const y = e.clientY - rect.top;  // Get position relative to element
+          
+          requestAnimationFrame(() => {
+            singleImg.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+          });
+        });
+      });
+    }
+  
+    // Initialize on first load
+    init()
+  
+    // Re-initialize after swapping pages
+    document.addEventListener("astro:after-swap", init)
+  </script>

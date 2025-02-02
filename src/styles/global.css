@@ -259,7 +259,7 @@
   }
 
   .project-meta {
-    @apply invisible md:visible fixed pointer-events-none opacity-0 translate-x-1/2 translate-y-1/2 bg-white dark:bg-ink-800 px-4 py-2 z-50 top-0 left-0 rounded-full w-fit flex gap-2;
+    @apply invisible md:visible fixed pointer-events-none opacity-0 translate-x-1/2 translate-y-1/2 bg-white dark:bg-ink-800 px-4 py-2 z-50 top-0 left-0 rounded-full w-fit flex gap-2 shadow-xl;
   }
 
   @media (pointer: coarse) {
@@ -291,15 +291,21 @@
   }
 
   .frame-img {
-    @apply col-span-full p-0 md:p-10 lg:p-11 bg-ink-50 dark:bg-ink-900 rounded-xl flex items-center justify-center object-contain max-h-[calc(100svh-1rem)];
+    @apply col-span-full p-0 md:p-10 lg:p-11 bg-ink-50 dark:bg-ink-900 rounded-xl flex items-center justify-center min-h-0 lg:min-h-[calc(100svh-2rem)] overflow-hidden;
   }
 
   .frame-img p {
-    @apply m-0 h-full w-full flex items-center justify-center;
+    @apply m-0 w-full h-full flex items-center justify-center;
   }
 
   .frame-img img {
-    @apply max-h-full w-auto h-auto object-contain md:rounded-none;
+    @apply w-auto h-auto max-w-full max-h-full lg:max-h-[calc(100svh-4rem)] object-contain md:rounded-none;
+  }
+
+  .sm-img img,
+  .md-img img,
+  .lg-img img {
+    @apply max-w-full h-auto object-contain;
   }
 
   .sm-img {
@@ -314,11 +320,18 @@
     @apply col-span-full md:col-span-4 h-fit;
   }
 
+  .book img{
+    @apply md:drop-shadow-xl;
+  }
+
+  .print img {
+    @apply md:drop-shadow-md;
+  }
 
   /* Project index */
 
   .index-single {
-    @apply grid gap-x-4 grid-cols-2 md:grid-cols-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 no-underline lg:hover:px-4 transition-all duration-200 ease-in-out;
+    @apply relative grid gap-x-4 grid-cols-2 md:grid-cols-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 no-underline lg:hover:px-4 transition-all duration-200 ease-in-out;
   }
 
   .index-single:hover + .index-single {
@@ -335,6 +348,20 @@
 
   .index-client {
     @apply col-span-1 truncate;
+  }
+
+  .index-img {
+    @apply absolute pointer-events-none opacity-0 w-auto h-32 md:h-56 z-10 bg-white dark:bg-ink-800 rounded-xl shadow-xl;
+  }
+
+  .index-img img {
+    @apply w-auto h-32 md:h-56 rounded-xl;
+  }
+
+  @media (pointer: coarse) {
+    .index-img {
+      @apply invisible;
+    }
   }
 
   /* News */
