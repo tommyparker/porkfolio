@@ -291,7 +291,7 @@
   }
 
   .frame-img {
-    @apply col-span-full p-0 md:p-10 lg:p-11 bg-ink-50 dark:bg-ink-900 rounded-xl flex items-center justify-center min-h-0 lg:min-h-[calc(100svh-2rem)] overflow-hidden;
+    @apply col-span-full p-0 md:p-10 lg:p-11 bg-ink-50 dark:bg-ink-900 rounded-xl flex items-center justify-center lg:max-h-[calc(100svh-2rem)] overflow-hidden;
   }
 
   .frame-img p {
@@ -299,7 +299,7 @@
   }
 
   .frame-img img {
-    @apply w-auto h-auto max-w-full max-h-full lg:max-h-[calc(100svh-4rem)] object-contain md:rounded-none;
+    @apply w-auto h-auto max-w-full max-h-full object-contain md:rounded-none;
   }
 
   .sm-img img,
@@ -309,15 +309,15 @@
   }
 
   .sm-img {
-    @apply col-span-full md:col-span-2 h-fit;
+    @apply col-span-full md:col-span-2;
   }
 
   .md-img {
-    @apply col-span-full md:col-span-3 h-fit;
+    @apply col-span-full md:col-span-3;
   }
 
   .lg-img {
-    @apply col-span-full md:col-span-4 h-fit;
+    @apply col-span-full md:col-span-4;
   }
 
   .book img{
@@ -415,7 +415,7 @@
 
   /* Add these new utility classes */
   .sticky-below-nav {
-    @apply sticky;
+    @apply sticky h-fit;
     top: calc(var(--nav-offset) + 1rem);
     transition: top 0.35s ease-in-out;
   }
