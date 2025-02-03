@@ -21,6 +21,8 @@
     font-weight: 500;
     font-display: swap;
     size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
   }
 
   @font-face {
@@ -29,7 +31,9 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
+    size-adjust: 100%;
     text-rendering: optimizeLegibility;
+    font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
   }
   
   @font-face {
@@ -38,14 +42,14 @@
     font-style: italic;
     font-weight: 700;
     font-display: swap;
+    size-adjust: 100%;
+    text-rendering: optimizeLegibility;
     font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
   }
 
   body, .prose p, .prose a {
     @apply font-sans text-base lg:text-lg xl:text-xl leading-normal text-black dark:text-paper tracking-wide;
     font-variant-numeric: lining-nums tabular-nums;
-    font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
   
@@ -343,7 +347,7 @@
   }
 
   .index-title {
-    @apply font-normal col-span-1 md:col-span-2 truncate;
+    @apply font-bold col-span-1 md:col-span-2 truncate;
   }
 
   .index-client {

@@ -3,13 +3,24 @@ import Container from './Container.astro';
 import Layout from './Layout.astro';
 import Exit from '../components/Exit.astro';
 const { frontmatter } = Astro.props;
+
+// Add this script to modify all links in the content
+const modifyLinks = `
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.prose a');
+    links.forEach(link => {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+  });
+`;
 ---
 <Layout>
     <Container>
       <div class="grid grid-cols-4 gap-2 md:gap-4 mb-24">
         <div class="col-start-1 col-span-full md:col-span-2 md:sticky-below-nav h-fit">
           <h1 class="mb-2 md:mb-4 mt-12 md:mt-0 text-balance">{frontmatter.title}</h1>  
-          <p class="mb-4">{frontmatter.pubDate.toString().slice(4,15)}</p>
+          <h4 class="mb-4">{frontmatter.pubDate.toString().slice(4,15)}</h4>
         </div>
         <div class="prose col-span-full col-start-1 md:col-start-3 md:col-span-2">
           <slot />
@@ -18,3 +29,5 @@ const { frontmatter } = Astro.props;
     </Container>
     <Exit href="/news" slot="fixed" />
 </Layout>
+
+<script set:html={modifyLinks}></script>
