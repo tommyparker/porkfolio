@@ -6,7 +6,7 @@ const projects = await getCollection('projects', ({ data }) => {
 	return data.draft !== true;
 });
 
-const sortedProjects = projects.sort((a, b) => new Date(b.data.year) - new Date(a.data.year));
+const sortedProjects = projects.sort((a, b) => (a.data.order ?? 100) - (b.data.order ?? 100));
 ---
 
 <div class="project-index">

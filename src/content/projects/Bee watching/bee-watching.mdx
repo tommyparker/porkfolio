@@ -2,6 +2,7 @@
 title: Bee watching
 description: A simple loop I made to show my love for bees, watching them clamber all over the poppies, and spending time in the garden. Made in After Effects.
 year: '2022'
+order: 1
 client: Personal
 thumbnail:
   url: "TommyParker_BeesStatic.webp"
@@ -10,15 +11,10 @@ thumbnail:
   focus: center
   playbackId: "ASuqFompQ28u5j3kR436quT3srWHKoFWOizOHD5psdI"
 ---
+import ProjectVideo from '../../../components/ProjectVideo.astro';
 
-<div class="video-container aspect-[3/1]">
-  <mux-player
-    playback-id="yVM4TTqs1hfiVuztG015Lw3qTOAVWQAcZgiQYEJVqToY"
-    stream-type="on-demand"
-    min-resolution="1080p"
-    autoplay
-    loop
-    muted
-    style="aspect-ratio: 3/1"
-  />
-</div>
+<ProjectVideo
+  playbackId="yVM4TTqs1hfiVuztG015Lw3qTOAVWQAcZgiQYEJVqToY"
+  aspectRatio="3/1"
+  className="video-container aspect-[3/1]"
+/>

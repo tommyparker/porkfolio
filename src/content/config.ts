@@ -5,6 +5,7 @@ const projectsCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     year: z.string().optional(),
+    order: z.number().optional(),
     client: z.union([
       z.string(),
       z.array(z.string())

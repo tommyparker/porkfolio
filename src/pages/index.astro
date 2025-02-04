@@ -7,6 +7,9 @@ import { getCollection } from 'astro:content';
 const projects = await getCollection('projects', ({ data }) => {
 	return data.draft !== true;
 });
+
+const sortedProjects = projects.sort((a, b) => (a.data.order ?? 100) - (b.data.order ?? 100));
+
 const pageTitle = "Work";
 ---
 
@@ -22,7 +25,7 @@ const pageTitle = "Work";
 	<Container class="py-0" animate={false}>
 		<div class="projects-grid">
 			{
-				projects.map((project, index) => (
+				sortedProjects.map((project, index) => (
 					<Project 
 						url={`/projects/${project.slug.split('/').pop()}/`} 
 						title={project.data.title} 

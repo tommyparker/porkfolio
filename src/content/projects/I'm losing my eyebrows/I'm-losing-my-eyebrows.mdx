@@ -11,17 +11,12 @@ thumbnail:
   focus: center
   playbackId: "DVtflYgvjK02RvRQu8yqpe00pJ011K3DPM4YcPSZAm6yFM"
 ---
+import ProjectVideo from '../../../components/ProjectVideo.astro';
 
-<div class="video-container">
-  <mux-player
-    playback-id={frontmatter.thumbnail.playbackId}
-    stream-type="on-demand"
-    min-resolution="1080p"
-    autoplay
-    loop
-    muted
-    style="aspect-ratio: 16/9"
-  />
-</div>
+<ProjectVideo
+  playbackId="DVtflYgvjK02RvRQu8yqpe00pJ011K3DPM4YcPSZAm6yFM"
+  aspectRatio="16/9"
+  className="video-container aspect-[16/9]"
+/>
 
 

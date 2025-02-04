@@ -15,42 +15,25 @@ thumbnail:
   playbackId: "JKpoOJBSZZDySbQyDzazHfjvyutrfAfJCMAnetVf15E"
 ---
 import ProjectImage from '../../../components/ProjectImage.astro';
+import ProjectVideo from '../../../components/ProjectVideo.astro';
 
-<div class="sm-img video-container aspect-square">
-  <mux-player
-    playback-id={frontmatter.thumbnail.playbackId}
-    stream-type="on-demand"
-    min-resolution="1080p"
-    autoplay
-    loop
-    muted
-    style="aspect-ratio: 1/1"
-  />
-</div>
+<ProjectVideo
+  playbackId="JKpoOJBSZZDySbQyDzazHfjvyutrfAfJCMAnetVf15E"
+  aspectRatio="1/1"
+  className="sm-img video-container aspect-square"
+/>
 
-<div class="sm-img video-container aspect-square">
-  <mux-player
-    playback-id={"EsfhNJHjTQAstpTpI00olRVLcImUSFwo00qCRWDZaBjMY"}
-    stream-type="on-demand"
-    min-resolution="1080p"
-    autoplay
-    loop
-    muted
-    style="aspect-ratio: 1/1"
-  />
-</div>
+<ProjectVideo
+  playbackId="EsfhNJHjTQAstpTpI00olRVLcImUSFwo00qCRWDZaBjMY"
+  aspectRatio="1/1"
+  className="sm-img video-container aspect-square"
+/>
 
-<div class="sm-img video-container aspect-square">
-  <mux-player
-    playback-id={"H43cPYPEUBxALJT3HdCMG1i7aXzaqEPTs02W76taSUHQ"}
-    stream-type="on-demand"
-    min-resolution="1080p"
-    autoplay
-    loop
-    muted
-    style="aspect-ratio: 1/1"
-  />
-</div>
+<ProjectVideo
+  playbackId="H43cPYPEUBxALJT3HdCMG1i7aXzaqEPTs02W76taSUHQ"
+  aspectRatio="1/1"
+  className="sm-img video-container aspect-square"
+/>
 
 <ProjectImage
   src={import('TommyParker_Campus_Safety_Day_Poster.webp')}

@@ -1,5 +1,5 @@
 ---
-const { title, client, url, thumbnail, slug, index } = Astro.props;
+const { title, client, url, thumbnail, categories = [], index } = Astro.props;
 import { Image } from 'astro:assets';
 
 const size = thumbnail?.size || 'small';
@@ -12,6 +12,7 @@ const loadingType = index < 8 ? "eager" : "lazy";
   href={url} 
   class={`thumbnail ${size} ${focus} group block opacity-0`}
   data-index={index}
+  data-categories={categories.join(',')}
 >
   <div class="thumbnail-image-container">
     {thumbnail.playbackId ? (

@@ -1,0 +1,27 @@
+---
+interface Props {
+  playbackId: string;
+  className?: string;
+  minResolution?: string;
+  aspectRatio?: string;
+}
+
+const {
+  playbackId,
+  className = '',
+  minResolution = '1080p',
+  aspectRatio = '16/9',
+} = Astro.props;
+---
+
+<div class={className}>
+  <mux-player
+    playback-id={playbackId}
+    stream-type="on-demand"
+    min-resolution={minResolution}
+    autoplay
+    loop
+    muted
+    style={`aspect-ratio: ${aspectRatio}`}
+  />
+</div>

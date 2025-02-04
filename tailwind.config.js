@@ -6,7 +6,7 @@ export default {
       'blue': '#3e7ec5',
       'yellow': '#f8c03b',
       'red': '#e75f3a',
-      'pink': '#ef6e98',
+      'pink': '#f482a7',
       'white': '#ffffff',
       'paper': '#f7f4ea',
       'black': '#0e0e0e',
