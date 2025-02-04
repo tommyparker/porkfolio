@@ -75,7 +75,7 @@
   }
   
   p, blockquote, ul, li, input {
-    @apply text-base lg:text-lg xl:text-xl leading-normal;
+    @apply text-base lg:text-lg xl:text-xl !leading-normal;
   }
   
   .prose {
@@ -124,7 +124,7 @@
   }
 
   .menu a:after {
-    @apply content-[''] absolute inline-block h-[1px] -bottom-[17px] left-0 right-0 bg-black dark:bg-paper;
+    @apply content-[''] absolute inline-block h-[1px] -bottom-[13px] xl:-bottom-[15px] left-0 right-0 bg-black dark:bg-paper;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.2s ease-in-out;

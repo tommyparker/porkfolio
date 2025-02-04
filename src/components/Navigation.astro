@@ -1,5 +1,7 @@
 ---
 import Container from '../layouts/Container.astro';
+import { Image } from 'astro:assets';
+import logo from "../assets/Profile_2023_2.png";
 
 // Get the full URL first
 const url = new URL(Astro.request.url);
@@ -11,15 +13,26 @@ const isProjectPage = pathSegments.includes('projects');
 const isNewsPost = pathSegments.includes('posts');
 ---
 
-<Container animate={false} class="navigation grid grid-cols-4 gap-4 justify-between w-full fixed top-0 z-50 bg-paper dark:bg-ink-950 pb-0">
-    <h4 class="col-span-full sm:col-span-2"><a href="/" class="logo">Tommy Parker</a></h4>
-    <div class="menu col-span-full sm:col-span-2 flex gap-4 md:gap-8">
-        <a class={`${currentPath === "" || isProjectPage ? "active" : ""} after-blue`} href="/">Work</a>
-        <a class={`${currentPath === "news" || isNewsPost ? "active" : ""} after-red`} href="/news">News</a>
-        <a class={`${currentPath === "info" ? "active" : ""} after-yellow`} href="/info">Info</a>
-        <a class={`${currentPath === "contact" ? "active" : ""} after-pink`} href="#contact">Contact</a>
+<Container animate={false} class="navigation flex flex-col w-full fixed top-0 z-50 bg-paper dark:bg-ink-950 pb-0">
+    <div class="flex md:grid md:grid-cols-2 items-center gap-4 w-full">
+        <a href="/" class="logo flex items-center h-6 lg:h-7 xl:h-8">
+            <Image 
+                src={logo} 
+                alt="Tommy Parker" 
+                width={100} 
+                height={100} 
+                class="rounded-full object-cover h-6 lg:h-7 xl:h-8 w-auto duration-200 ease-in-out hover:scale-110"
+                loading="eager"
+            />
+        </a>
+        <div class="menu flex gap-4 md:gap-8 ml-auto md:ml-0">
+            <a class={`${currentPath === "" || isProjectPage ? "active" : ""} after-blue`} href="/">Work</a>
+            <a class={`${currentPath === "news" || isNewsPost ? "active" : ""} after-red`} href="/news">News</a>
+            <a class={`${currentPath === "info" ? "active" : ""} after-yellow`} href="/info">Info</a>
+            <a class={`${currentPath === "contact" ? "active" : ""} after-pink`} href="#contact">Contact</a>
+        </div>
     </div>
-    <div class="block h-[1px] bg-ink-50 dark:bg-ink-900 w-full col-span-full bottom-0"></div>
+    <div class="block h-[1px] bg-ink-50 dark:bg-ink-900 w-full mt-3"></div>
 </Container>
 
 <script>
