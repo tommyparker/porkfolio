@@ -1,6 +1,6 @@
 ---
 title: Customer experience
-description: An illustration set for Cura, a leading pharmaceutical distributor based in Kuwait, showcasing their services and products through a range of reoccuring characters.
+description: A set of illustrated people used in an internal campaign for Brickworks, a building material manufacturer, to help improve the customer experience.
 year: '2023'
 client: |
         Brickworks
@@ -12,23 +12,40 @@ thumbnail:
   size: medium
   focus: center
 ---
-<div class="frame-img bg-[#f2dacb]">
-  ![Woman showing family samples](TommyParker_Brickworks1.webp)
-</div>
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-<div class="md-img frame-img bg-[#f2dacb]">
-  ![Man shaking hands with architect](TommyParker_Brickworks2.webp)
-</div>
-<div class="md-img frame-img bg-[#f2dacb]">
-  ![Woman showing samples](TommyParker_Brickworks4.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Brickworks1.webp')}
+  alt="Woman showing family samples"
+  className="frame-img bg-[#f2dacb]"
+/>
 
-<div class="frame-img bg-[#f2dacb]">
-  ![Man talking with tradesman](TommyParker_Brickworks5.webp)
-</div>
-<div class="md-img frame-img bg-[#f2dacb]">
-  ![Man shaking hands with woman](TommyParker_Brickworks6.webp)
-</div>
-<div class="md-img frame-img bg-[#f2dacb]">
-  ![Team shot](TommyParker_Brickworks8.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Brickworks2.webp')}
+  alt="Man shaking hands with architect"
+  className="md-img frame-img bg-[#f2dacb]"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Brickworks4.webp')}
+  alt="Woman showing samples"
+  className="md-img frame-img bg-[#f2dacb]"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Brickworks5.webp')}
+  alt="Man talking with tradesman"
+  className="frame-img bg-[#f2dacb]"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Brickworks6.webp')}
+  alt="Man shaking hands with woman"
+  className="md-img frame-img bg-[#f2dacb]"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Brickworks8.webp')}
+  alt="Team shot"
+  className="md-img frame-img bg-[#f2dacb]"
+/>

@@ -10,7 +10,10 @@ thumbnail:
   size: small
   focus: bottom
 ---
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-<div class="frame-img book">
-  ![Concours of Elegance](TommyParker_COE_2023.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_COE_2023.webp')}
+  alt="Concours of Elegance"
+  className="frame-img book"
+/>

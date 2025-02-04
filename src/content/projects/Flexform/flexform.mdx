@@ -12,14 +12,23 @@ thumbnail:
   size: medium
   focus: center
 ---
-<div class="frame-img bg-[#fefbee]">
-  ![Flexform sofa](TommyParker_Monocle_Flexform1.webp)
-</div>
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-<div class="md-img">
-  ![Hotel guests on a Flexform sofa](TommyParker_Monocle_Flexform2.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Monocle_Flexform1.webp')}
+  alt="Flexform sofa"
+  className="frame-img bg-[#fefbee]"
+  loading="eager"
+/>
 
-<div class="md-img sticky-below-nav">
-  ![Family on a Flexform sofa](TommyParker_Monocle_Flexform3.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Monocle_Flexform2.webp')}
+  alt="Hotel guests on a Flexform sofa"
+  className="md-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Monocle_Flexform3.webp')}
+  alt="Family on a Flexform sofa"
+  className="md-img md:sticky-below-nav"
+/>

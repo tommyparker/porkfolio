@@ -9,10 +9,16 @@ thumbnail:
   size: large
   focus: bottom
 ---
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-<div class="md-img">
-  ![The British despatch rider](TommyParker_Inventaire_YosemiteRanger.webp)
-</div>
-<div class="md-img md:sticky-below-nav">
-  ![The British despatch rider](TommyParker_Inventaire_YosemiteRanger_Framed.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Inventaire_YosemiteRanger.webp')}
+  alt="The Yosemite ranger"
+  className="md-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Inventaire_YosemiteRanger_Framed.webp')}
+  alt="The Yosemite ranger"
+  className="md-img md:sticky-below-nav"
+/>

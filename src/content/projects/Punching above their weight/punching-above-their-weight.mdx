@@ -11,10 +11,16 @@ thumbnail:
   focus: center
 ---
 
-<div class="sm-img sticky-below-nav">
-  ![Punching above their weight](TommyParker_Monocle_AgendaSmallCities.webp)
-</div>
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-<div class="lg-img frame-img">
-  ![Punching above their weight in situ](TommyParker_Monocle_AgendaSmallCities_Page.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Monocle_AgendaSmallCities.webp')}
+  alt="Punching above their weight"
+  className="sm-img md:sticky-below-nav"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Monocle_AgendaSmallCities_Page.webp')}
+  alt="Punching above their weight in situ"
+  className="lg-img frame-img"
+/>

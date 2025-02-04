@@ -14,6 +14,7 @@ thumbnail:
   focus: center
   playbackId: "JKpoOJBSZZDySbQyDzazHfjvyutrfAfJCMAnetVf15E"
 ---
+import ProjectImage from '../../../components/ProjectImage.astro';
 
 <div class="sm-img video-container aspect-square">
   <mux-player
@@ -51,9 +52,14 @@ thumbnail:
   />
 </div>
 
-<div class="md-img print frame-img">
-  ![Woman waving to Uber driver](TommyParker_Campus_Safety_Day_Poster.webp)
-</div>
-<div class="md-img print frame-img">
-  ![Young person checking their phone and driver](TommyParker_Campus_Safety_Night_Poster.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Campus_Safety_Day_Poster.webp')}
+  alt="Woman waving to Uber driver"
+  className="md-img print frame-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Campus_Safety_Night_Poster.webp')}
+  alt="Young person checking their phone and driver"
+  className="md-img print frame-img"
+/>

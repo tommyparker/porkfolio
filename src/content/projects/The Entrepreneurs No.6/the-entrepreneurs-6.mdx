@@ -10,7 +10,10 @@ thumbnail:
   size: medium
   focus: center
 ---
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-<div class="frame-img book">
-  ![Concours of Elegance](TommyParker_EntrepreneursCover.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_EntrepreneursCover.webp')}
+  alt="The Entrepreneurs No.6"
+  className="frame-img book"
+/>

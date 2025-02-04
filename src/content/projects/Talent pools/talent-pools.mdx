@@ -10,12 +10,24 @@ thumbnail:
   size: medium
   focus: center
 ---
+import ProjectImage from '../../../components/ProjectImage.astro';
 
 <div class="sm-img">
-  ![Talent pools page](TommyParker_Monocle_TalentPools_P1.webp)
-  ![Talent pools page](TommyParker_Monocle_TalentPools_P3.webp)
+<ProjectImage
+  src={import('TommyParker_Monocle_TalentPools_P1.webp')}
+  alt="Talent pools page"
+  className="sm-img mb-4"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Monocle_TalentPools_P3.webp')}
+  alt="Talent pools page"
+  className="sm-img"
+/>
 </div>
 
-<div class="lg-img sticky-below-nav">
-  ![Talent pools spread](TommyParker_Monocle_TalentPools_P2.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Monocle_TalentPools_P2.webp')}
+  alt="Talent pools spread"
+  className="lg-img sticky-below-nav"
+/>

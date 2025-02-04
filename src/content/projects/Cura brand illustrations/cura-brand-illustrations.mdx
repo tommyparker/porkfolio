@@ -12,74 +12,130 @@ thumbnail:
   size: medium
   focus: top
 ---
-<div class="frame-img bg-[#fee3c3]">
-  ![Woman standing with iPad](TommyParker_Cura_1.04.10.webp)
-</div>
-<div class="frame-img bg-[#d5b0cf]">
-  ![Warehouse worker handling a box](TommyParker_Cura_1.05.10.webp)
-</div>
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-<div class="md-img">
-  ![Woman at a desk](TommyParker_Cura_1.07.10.webp)
-</div>
-<div class="md-img">
-  ![Delivery man with trucks](TommyParker_Cura_1.06.10.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Cura_1.04.10.webp')}
+  alt="Woman standing with iPad"
+  className="frame-img bg-[#fee3c3]"
+/>
 
-<div class="sm-img">
-  ![Medicine](TommyParker_Cura_1.01.10.webp)
-</div>
-<div class="sm-img">
-  ![Medical equipment](TommyParker_Cura_1.02.10.webp)
-</div>
-<div class="sm-img">
-  ![Cosmetics](TommyParker_Cura_1.03.10.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Cura_1.05.10.webp')}
+  alt="Warehouse worker handling a box"
+  className="frame-img bg-[#d5b0cf]"
+/>
 
-<div class="md-img">
-  ![Arab man on phone wearing a dishdasha](TommyParker_Cura_1.08.10.webp)
-</div>
-<div class="md-img">
-  ![Man and woman shaking hands](TommyParker_Cura_3.01.10.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Cura_1.07.10.webp')}
+  alt="Woman at a desk"
+  className="md-img"
+/>
 
-<div class="frame-img bg-[#d5b0cf]">
-  ![Man in forklift](TommyParker_Cura_3.02.10.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Cura_1.06.10.webp')}
+  alt="Delivery man with trucks"
+  className="md-img"
+/>
 
-<div class="md-img">
-  ![Doctor signing for a parcel](TommyParker_Cura_3.03.10.webp)
-</div>
-<div class="md-img">
-  ![Man standing next to woman at a desk](TommyParker_Cura_3.04.10.webp)
-</div>
-<div class="md-img">
-  ![Man and woman inspecting medicine](TommyParker_Cura_4.01.10.webp)
-</div>
-<div class="md-img">
-  ![Woman presenting a graph](TommyParker_Cura_4.02.10.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Cura_1.01.10.webp')}
+  alt="Medicine"
+  className="sm-img"
+/>
 
-<div class="frame-img bg-[#e3e1ef]">
-  ![Man greeting a boy and his grandfather](TommyParker_Cura_4.03.10.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Cura_1.02.10.webp')}
+  alt="Medical equipment"
+  className="sm-img"
+/>
 
-<div class="sm-img">
-  ![Man and woman measuring a pill](TommyParker_Cura_5.01.10.webp)
-</div>
-<div class="sm-img">
-  ![Doctor inspecting the interior of a pill](TommyParker_Cura_5.02.10.webp)
-</div>
-<div class="sm-img">
-  ![Warehouse worker inspecting a pill](TommyParker_Cura_5.03.10.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Cura_1.03.10.webp')}
+  alt="Cosmetics"
+  className="sm-img"
+/>
 
-<div class="frame-img bg-[#dad2a5]">
-  ![Elderly man on a phone call](TommyParker_Cura_5.04.10.webp)
-</div>
-<div class="md-img">
-  ![Team pushing a globe](TommyParker_Cura_6.01.10.webp)
-</div>
-<div class="md-img">
-  ![Woman and man shaking hands](TommyParker_Cura_7.01.10.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_Cura_1.08.10.webp')}
+  alt="Arab man on phone wearing a dishdasha"
+  className="md-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_3.01.10.webp')}
+  alt="Man and woman shaking hands"
+  className="md-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_3.02.10.webp')}
+  alt="Man in forklift"
+  className="frame-img bg-[#d5b0cf]"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_3.03.10.webp')}
+  alt="Doctor signing for a parcel"
+  className="md-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_3.04.10.webp')}
+  alt="Man standing next to woman at a desk"
+  className="md-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_4.01.10.webp')}
+  alt="Man and woman inspecting medicine"
+  className="md-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_4.02.10.webp')}
+  alt="Woman presenting a graph"
+  className="md-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_4.03.10.webp')}
+  alt="Man greeting a boy and his grandfather"
+  className="frame-img bg-[#e3e1ef]"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_5.01.10.webp')}
+  alt="Man and woman measuring a pill"
+  className="sm-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_5.02.10.webp')}
+  alt="Doctor inspecting the interior of a pill"
+  className="sm-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_5.03.10.webp')}
+  alt="Warehouse worker inspecting a pill"
+  className="sm-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_5.04.10.webp')}
+  alt="Elderly man on a phone call"
+  className="frame-img bg-[#dad2a5]"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_6.01.10.webp')}
+  alt="Team pushing a globe"
+  className="md-img"
+/>
+
+<ProjectImage
+  src={import('TommyParker_Cura_7.01.10.webp')}
+  alt="Woman and man shaking hands"
+  className="md-img"
+/>

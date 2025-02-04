@@ -12,5 +12,10 @@ thumbnail:
   size: small
   focus: center
 ---
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-![Ways men can be an ally for women](TommyParker_MaleAlly.webp)
+<ProjectImage
+  src={import('TommyParker_MaleAlly.webp')}
+  alt="Ways men can be an ally for women"
+  loading="eager"
+/>  

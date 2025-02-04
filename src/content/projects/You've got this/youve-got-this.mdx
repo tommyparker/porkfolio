@@ -9,10 +9,16 @@ thumbnail:
   size: medium
   focus: center
 ---
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-<div class="sm-img relative top-0 md:sticky-below-nav">
-  ![Front design](TommyParker_YouveGotThis_Front.webp)
-</div>
-<div class="lg-img">
-  ![Back design](TommyParker_YouveGotThis_Back.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_YouveGotThis_Front.webp')}
+  alt="Front design"
+  className="sm-img md:sticky-below-nav"
+/>
+
+<ProjectImage
+  src={import('TommyParker_YouveGotThis_Back.webp')}
+  alt="Back design"
+  className="lg-img"
+/>

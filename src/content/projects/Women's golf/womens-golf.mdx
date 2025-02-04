@@ -10,7 +10,11 @@ thumbnail:
   size: medium
   focus: center
 ---
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-<div class="frame-img bg-[#e4d8c0]">
-  ![Women’s golf](TommyParker_WomensGolf.webp)
-</div>
+<ProjectImage
+  src={import('TommyParker_WomensGolf.webp')}
+  alt="Women’s golf"
+  className="frame-img bg-[#e4d8c0]"
+  loading="eager"
+/>

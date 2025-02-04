@@ -10,5 +10,10 @@ thumbnail:
   size: small
   focus: bottom
 ---
+import ProjectImage from '../../../components/ProjectImage.astro';
 
-![Concours of Elegance](TommyParker_WSJ_CommitmentIssues.webp)
+<ProjectImage
+  src={import('TommyParker_WSJ_CommitmentIssues.webp')}
+  alt="Commitment issues"
+  className="frame-img"
+/>

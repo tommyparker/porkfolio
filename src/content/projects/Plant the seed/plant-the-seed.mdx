@@ -16,6 +16,10 @@ thumbnail:
 draft: true
 ---
 
-<div class="frame-img">
-  ![Plant the seed](TommyParker_FacebookLeCube.webp)
-</div>
+import ProjectImage from '../../../components/ProjectImage.astro';
+
+<ProjectImage
+  src={import('TommyParker_FacebookLeCube.webp')}
+  alt="Plant the seed"
+  className="frame-img"
+/>
