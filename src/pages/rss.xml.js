@@ -11,14 +11,22 @@ export async function GET(context) {
     site: context.site,
     xmlns: {
       content: 'http://purl.org/rss/1.0/modules/content/',
-      dc: 'http://purl.org/dc/elements/1.1/'
+      dc: 'http://purl.org/dc/elements/1.1/',
+      atom: 'http://www.w3.org/2005/Atom'
     },
     stylesheet: '/styles.xsl',
     items: await Promise.all(
       allPosts.map(async (post) => {
         const { Content } = await post.render();
         const renderedContent = await marked.parse(post.body);
-        const sanitizedContent = sanitizeHtml(renderedContent, {
+        
+        // Make image URLs absolute
+        const absoluteContent = renderedContent.replace(
+          /src="\/images\//g,
+          `src="${context.site}images/`
+        );
+        
+        const sanitizedContent = sanitizeHtml(absoluteContent, {
           allowedTags: [...sanitizeHtml.defaults.allowedTags, 'img'],
           allowedAttributes: {
             ...sanitizeHtml.defaults.allowedAttributes,
@@ -26,6 +34,7 @@ export async function GET(context) {
           }
         });
         
+        // Ensure description comes before content:encoded by using customData
         return {
           title: post.data.title,
           pubDate: post.data.pubDate,
@@ -35,6 +44,9 @@ export async function GET(context) {
         };
       })
     ),
-    customData: `<language>en-us</language>`,
+    customData: `
+      <language>en-us</language>
+      <atom:link href="${context.site}rss.xml" rel="self" type="application/rss+xml" />
+    `,
   });
 }
