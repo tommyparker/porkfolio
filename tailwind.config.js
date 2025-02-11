@@ -36,6 +36,9 @@ export default {
       },
       transitionProperty: {
         'height': 'height',
+      },
+      transitionTimingFunction: {
+        'custom': 'cubic-bezier(.75,0,.25,1)',
       }
     },
   },

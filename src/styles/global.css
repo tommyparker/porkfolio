@@ -127,7 +127,7 @@
     @apply content-[''] absolute inline-block h-[1px] -bottom-[13px] xl:-bottom-[15px] left-0 right-0 bg-black dark:bg-paper;
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s cubic-bezier(.75,0,.25,1);
   }  
 
   .menu a.active:after,
@@ -162,7 +162,7 @@
   /* Exit */
 
   .exit {
-    @apply relative flex items-center justify-center w-10 h-10 lg:w-11 lg:h-11 bg-white dark:bg-ink-800 shadow-xl rounded-full text-center leading-none no-underline z-[100] transition-[transform] duration-200 ease-in-out hover:scale-110;
+    @apply relative flex items-center justify-center w-10 h-10 lg:w-11 lg:h-11 bg-white dark:bg-ink-800 shadow-xl rounded-full text-center leading-none no-underline z-[100] transition-[transform] duration-300 ease-custom hover:scale-110;
   }
 
   .exit-container {
@@ -171,7 +171,7 @@
     -webkit-transform: translateY(100%) translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    animation: slideUp 0.35s ease-in-out forwards;
+    animation: slideUp 0.35s cubic-bezier(.75,0,.25,1) forwards;
     animation-delay: 1s;
   }
 
@@ -222,7 +222,7 @@
   }
 
   .thumbnail-image-container {
-    @apply overflow-hidden w-full h-full block contain-size group-hover:scale-[0.96] transition-all duration-[0.2] ease-in-out rounded-xl;
+    @apply overflow-hidden w-full h-full block contain-size group-hover:scale-[0.96] transition-all duration-300 ease-custom rounded-xl;
   }
 
   .thumbnail.small {
@@ -335,7 +335,7 @@
   /* Project index */
 
   .index-single {
-    @apply relative grid gap-x-4 grid-cols-2 md:grid-cols-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 no-underline lg:hover:px-4 transition-all duration-200 ease-in-out;
+    @apply relative grid gap-x-4 grid-cols-2 md:grid-cols-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 no-underline lg:hover:px-4 transition-all duration-300 ease-custom;
   }
 
   .index-single:hover + .index-single {
@@ -370,7 +370,7 @@
 
   /* News */
   .blog-single {
-    @apply flex flex-row justify-between gap-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 lg:hover:px-4 transition-all duration-200 ease-in-out no-underline;
+    @apply flex flex-row justify-between gap-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 lg:hover:px-4 transition-all duration-300 ease-custom no-underline;
   }
 
   .blog-single:hover + .blog-single {
@@ -421,7 +421,7 @@
   .sticky-below-nav {
     @apply sticky h-fit;
     top: calc(var(--nav-offset) + 1rem);
-    transition: top 0.35s ease-in-out;
+    transition: top 0.3s ease;
   }
 
   .sticky-default {

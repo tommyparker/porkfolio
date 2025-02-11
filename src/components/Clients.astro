@@ -51,7 +51,6 @@ const logos = [
                     class={`
                         fade-in-logo w-full h-auto p-2 sm:p-4 lg:p-2 xl:p-4 
                         fill-black dark:fill-paper 
-                        hover:scale-[0.9] transition-all duration-[0.2] ease-in-out
                         ${index >= 12 ? 'hidden md:block' : ''}
                         ${index >= 16 ? 'sm:hidden lg:block' : ''}
                         ${index >= 16 ? 'md:hidden xl:block' : ''}
@@ -69,7 +68,7 @@ const logos = [
     .fade-in-logo {
         opacity: 0;
         transform: translateY(16px);
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        transition: opacity 0.3s cubic-bezier(.75,0,.25,1), translate 0.3s cubic-bezier(.75,0,.25,1);
         transition-delay: var(--stagger, 0s);
     }
 
