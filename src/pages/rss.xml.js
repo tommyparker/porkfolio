@@ -13,6 +13,7 @@ export async function GET(context) {
       content: 'http://purl.org/rss/1.0/modules/content/',
       dc: 'http://purl.org/dc/elements/1.1/'
     },
+    stylesheet: '/styles.xsl',
     items: await Promise.all(
       allPosts.map(async (post) => {
         const { Content } = await post.render();
