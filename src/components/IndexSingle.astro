@@ -27,10 +27,10 @@ const { title, client, year, url, thumbnail, slug, index } = Astro.props;
         const singleImg = element.querySelector('.index-img');
         
         // Show and animate the image
-        animate(singleImg, { opacity: 1 }, { duration: 0.15, easing: "easeInOut" });
+        animate(singleImg, { opacity: 1 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
 
         return () => {
-          animate(singleImg, { opacity: 0 }, { duration: 0.15, easing: "easeInOut" });
+          animate(singleImg, { opacity: 0 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
         };
       });
 

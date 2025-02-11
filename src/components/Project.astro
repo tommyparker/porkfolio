@@ -63,8 +63,8 @@ const loadingType = index < 8 ? "eager" : "lazy";
       { opacity: [0, 1], y: [16, 0] },
       { 
         delay: stagger(0.15),
-        duration: 0.4,
-        easing: "easeInOut"
+        duration: 0.3,
+        easing: [0.75, 0, 0.25, 1]
       }
     );
 
@@ -73,7 +73,7 @@ const loadingType = index < 8 ? "eager" : "lazy";
       animate(
         target,
         { opacity: [0, 15], y: [16, 0] },
-        { duration: 0.4, easing: "easeInOut" }
+        { duration: 0.3, easing: [0.75, 0, 0.25, 1] }
       );
     });
 
@@ -82,10 +82,10 @@ const loadingType = index < 8 ? "eager" : "lazy";
       const meta = element.querySelector('.project-meta');
       
       // Animate both the scale and meta simultaneously
-      animate(meta, { opacity: 1 }, { duration: 0.15, easing: "easeInOut" });
+      animate(meta, { opacity: 1 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
 
       return () => {
-        animate(meta, { opacity: 0 }, { duration: 0.15, easing: "easeInOut" });
+        animate(meta, { opacity: 0 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
       };
     });
 
