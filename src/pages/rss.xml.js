@@ -11,16 +11,17 @@ export async function GET(context) {
     items: await Promise.all(
       allPosts.map(async (post) => {
         const { Content } = await post.render();
+        const content = sanitizeHtml(Content, {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
+        });
         return {
           title: post.data.title,
           pubDate: post.data.pubDate,
-          description: post.data.description,
+          description: content,
           link: `/posts/${post.slug}/`,
-          content: sanitizeHtml(Content, {
-            allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
-          }),
         };
       })
     ),
+    customData: `<language>en-us</language>`,
   });
 }
