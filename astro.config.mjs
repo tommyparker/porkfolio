@@ -5,6 +5,7 @@ import mdx from '@astrojs/mdx';
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
+  site: 'https://porkfolio.vercel.app',
   plugins: [svgr()],
   integrations: [tailwind(), preact(), mdx({
     components: {
