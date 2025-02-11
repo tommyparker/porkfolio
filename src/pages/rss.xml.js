@@ -30,7 +30,7 @@ export async function GET(context) {
           pubDate: post.data.pubDate,
           description: post.data.description || '',
           link: `/posts/${post.slug}/`,
-          content: sanitizedContent
+          customData: `<content:encoded><![CDATA[${sanitizedContent}]]></content:encoded>`
         };
       })
     ),
