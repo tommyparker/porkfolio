@@ -11,7 +11,7 @@
     font-display: swap;
     size-adjust: 100%;
     text-rendering: optimizeLegibility;
-    font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
+    font-feature-settings: 'dlig' on, 'ss04' on, 'ss02' on;
   }
   
   @font-face {
@@ -22,7 +22,7 @@
     font-display: swap;
     size-adjust: 100%;
     text-rendering: optimizeLegibility;
-    font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
+    font-feature-settings: 'dlig' on, 'ss04' on, 'ss02' on;
   }
 
   @font-face {
@@ -33,7 +33,7 @@
     font-display: swap;
     size-adjust: 100%;
     text-rendering: optimizeLegibility;
-    font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
+    font-feature-settings: 'dlig' on, 'ss04' on, 'ss02' on;
   }
   
   @font-face {
@@ -44,7 +44,7 @@
     font-display: swap;
     size-adjust: 100%;
     text-rendering: optimizeLegibility;
-    font-feature-settings: 'dlig' on, 'ss01' on, 'ss02' on, 'ss04' on;
+    font-feature-settings: 'dlig' on, 'ss04' on, 'ss02' on;
   }
 
   body, .prose p, .prose a {

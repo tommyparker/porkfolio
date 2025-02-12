@@ -12,6 +12,7 @@
     "@astrojs/mdx": "^4.0.4",
     "@astrojs/preact": "^4.0.1",
     "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.4",
     "@mux/mux-player": "^3.2.4",
     "@vercel/analytics": "^1.5.0",
