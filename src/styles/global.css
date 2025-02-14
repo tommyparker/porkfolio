@@ -339,11 +339,11 @@
   }
 
   .index-single:hover + .index-single {
-    @apply lg:border-paper lg:dark:border-ink-950;
+    @apply lg:border-paper dark:lg:border-ink-950;
   }
 
   .index-year {
-    @apply hidden md:inline col-span-1 text-right;
+    @apply hidden md:inline col-span-1 text-right col-start-4;
   }
 
   .index-title {

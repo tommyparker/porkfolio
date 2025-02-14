@@ -26,3 +26,44 @@ const sortedProjects = projects.sort((a, b) => (a.data.order ?? 100) - (b.data.o
     }
   </div>
 </div>
+
+<script>
+  import { animate, hover } from "motion";
+  
+  function init() {
+    // Index-img on hover
+    hover(".index-single", (element) => {
+      const singleImg = element.querySelector('.index-img');
+      
+      // Show and animate the image
+      animate(singleImg, { opacity: 1 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
+
+      return () => {
+        animate(singleImg, { opacity: 0 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
+      };
+    });
+
+    // Optimize cursor following
+    const indexSingles = document.querySelectorAll('.index-single');
+    
+    indexSingles.forEach(indexSingle => {
+      const singleImg = indexSingle.querySelector('.index-img');
+      
+      indexSingle.addEventListener('mousemove', (e) => {
+        const rect = indexSingle.getBoundingClientRect();
+        const x = e.clientX - rect.left; // Get position relative to element
+        const y = e.clientY - rect.top;  // Get position relative to element
+        
+        requestAnimationFrame(() => {
+          singleImg.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+        });
+      });
+    });
+  }
+
+  // Initialize on first load
+  init()
+
+  // Re-initialize after swapping pages
+  document.addEventListener("astro:after-swap", init)
+</script>
