@@ -398,6 +398,35 @@
     @apply flex flex-col col-span-1 text-right;
   }
 
+  /* 404 */
+  .error-title, .error-text, .btn {
+    @apply text-center;
+  }
+
+  .error-title {
+    @apply mb-4;
+  }
+
+  .btn {
+    @apply mt-4 inline-block px-4 py-2 hover:px-6 border border-ink-50 dark:border-ink-900 hover:border-black hover:dark:border-paper rounded-full text-center no-underline transition-all duration-300 ease-custom;
+  }
+
+  .btn-colour:nth-of-type(4n+1):hover {
+    @apply border-blue;
+  }
+
+  .btn-colour:nth-of-type(4n+2):hover {
+    @apply border-red;
+  }
+
+  .btn-colour:nth-of-type(4n+3):hover {
+    @apply border-yellow;
+  }
+
+  .btn-colour:nth-of-type(4n):hover {
+    @apply border-pink;
+  }
+
   /* Mux video */
   .video-container {
     @apply rounded-xl overflow-hidden aspect-video;

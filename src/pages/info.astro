@@ -6,9 +6,7 @@ import InfoBlock from '../components/InfoBlock.astro';
 import Note from '../components/Note.astro';
 import Clients from '../components/Clients.astro';
 import Mail from '../components/Mail.astro';
-
-import { Image } from 'astro:assets';
-import porker from "../assets/Porker.jpg";
+import ProjectVideo from '../components/ProjectVideo.astro';
 
 const pageTitle = "Info";
 ---
@@ -17,11 +15,15 @@ const pageTitle = "Info";
 		<Greeting client:load messages={["Hey", "Howdy", "Hey there", "Yo", "Hello there", "Why hello"]} className="mt-auto" />
 	</Container>
     <Container class="py-0">
-        <Image src={porker} alt="Porker" class="rounded-xl w-full" loading={'eager'} />
+        <ProjectVideo
+            playbackId="yVM4TTqs1hfiVuztG015Lw3qTOAVWQAcZgiQYEJVqToY"
+            aspectRatio="3/1"
+            className="video-container aspect-[3/1]"
+        />
     </Container>
     <Container class="pt-0">
         <InfoBlock header="About" class="border-t-0">
-            <p class="mb-4">I’m an illustrator based on the scenic, south coast of Devon, UK. My work is character and colour-driven, with a playful approach that brings a sense of relatability to each piece. Drawing inspiration from cinematic storytelling, I create illustrations that invite viewers into warm and quirky worlds.</p>
+            <p class="mb-4">I’m an illustrator based on the south coast of Devon, UK. My work is character and colour-driven, with a playful approach that brings a sense of relatability to each piece. Drawing inspiration from cinematic storytelling, I create illustrations that invite viewers into warm and quirky worlds.</p>
             <p class="mb-4">Beyond illustration, I’m always keen to explore other creative avenues – whether through animation or experimenting with technologies.</p>
             <p class="mb-4">My work can be found across the globe in a variety of formats, from books and magazines to branding and advertising campaigns.</p>
             <p>In my free time, you’ll often find me riding my motorcycle in search of a good coffee, bouldering (rather badly), <a href="https://www.instagram.com/_sketchbooksessions/" target="_blank">running drawing clubs</a>, and sampling roast dinners across the West Country.</p>

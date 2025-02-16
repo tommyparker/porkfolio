@@ -7,7 +7,7 @@ import { ClientRouter } from 'astro:transitions';
 import Analytics from '@vercel/analytics/astro'
 import  SpeedInsights  from "@vercel/speed-insights/astro"
 
-const { pageTitle } = Astro.props;
+const { pageTitle, hideNav, hideFooter } = Astro.props;
 
 const anim = {
   old: {
@@ -53,13 +53,13 @@ const transitionAnimation = {
     <ClientRouter />
   </head>
   <body class="bg-paper dark:bg-ink-950">
-    <Navigation transition:persist/>
-    <div class="pt-[var(--nav-height)]">
+    {!hideNav && <Navigation transition:persist/>}
+    <div class={!hideNav ? "pt-[var(--nav-height)]" : ""}>
       <slot/>
       <Analytics />
       <SpeedInsights />
     </div>
-    <Footer/>
+    {!hideFooter && <Footer/>}
     <div class="exit-container">
       <slot name="fixed" />
     </div>
