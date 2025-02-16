@@ -14,14 +14,14 @@ const loadingType = index < 8 ? "eager" : "lazy";
   data-index={index}
   data-categories={categories.join(',')}
 >
-  <div class="thumbnail-image-container">
+  <div class="thumbnail-image-container relative overflow-hidden">
     {thumbnail.playbackId ? (
       <div class="relative w-full h-full">
         <Image 
           src={thumbnail.url}
           inferSize
           alt={thumbnail.alt}
-          class="absolute inset-0 w-full h-full object-cover"
+          class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300"
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           loading={loadingType}
         />
@@ -61,6 +61,18 @@ const loadingType = index < 8 ? "eager" : "lazy";
   import { animate, stagger, inView, hover } from "motion";
   
   function init() {
+    // Handle image load events
+    const images = document.querySelectorAll('.thumbnail-image-container img');
+    images.forEach(img => {
+      if (img.complete) {
+        img.classList.remove('opacity-0');
+      } else {
+        img.addEventListener('load', () => {
+          img.classList.remove('opacity-0');
+        });
+      }
+    });
+
     // Initial stagger animation on load
     animate(
       ".thumbnail",
@@ -76,12 +88,12 @@ const loadingType = index < 8 ? "eager" : "lazy";
     inView(".thumbnail", ({ target }) => {
       animate(
         target,
-        { opacity: [0, 15], y: [16, 0] },
+        { opacity: [0, 1], y: [16, 0] },
         { duration: 0.3, easing: [0.75, 0, 0.25, 1] }
       );
     });
 
-    // Project meta on hover - moved to parent element
+    // Project meta on hover - keeping original implementation
     hover(".thumbnail", (element) => {
       const meta = element.querySelector('.project-meta');
       
@@ -108,9 +120,9 @@ const loadingType = index < 8 ? "eager" : "lazy";
     });
   }
 
-  // Initialise on first load
-  init()
+  // Initialize on first load
+  init();
 
-  // Re-initialise after swapping pages
-  document.addEventListener("astro:after-swap", init)
+  // Re-initialize after swapping pages
+  document.addEventListener("astro:after-swap", init);
 </script>

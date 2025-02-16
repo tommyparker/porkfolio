@@ -284,10 +284,6 @@
     @apply inline-flex text-black dark:text-paper;
   }
 
-  .project-meta > .project-title {
-    @apply font-bold;
-  }
-
   .project-meta > .project-client {
     @apply font-normal;
   }
@@ -355,7 +351,7 @@
   }
 
   .index-title {
-    @apply font-bold col-span-1 md:col-span-2 truncate;
+    @apply col-span-1 md:col-span-2 truncate;
   }
 
   .index-client {
