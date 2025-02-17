@@ -12,27 +12,27 @@ const pageTitle = "Links"
 <Layout pageTitle={pageTitle} hideNav hideFooter>
     <Container class="h-svh">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 h-full">
-            <div class="col-span-2 rounded-xl p-4 relative flex flex-col justify-end min-h-[50svh]" style={`background-image: url(${portfolioBackground.src}); background-size: cover; background-position: top right;`}>
+            <div class="col-span-2 rounded-xl p-4 relative flex flex-col justify-end min-h-[390px] lg:min-h-[50svh]" style={`background-image: url(${portfolioBackground.src}); background-size: cover; background-position: top right;`}>
                 <h2 class="text-white mb-4">Tommy Parker</h2>
-                <p class="text-white text-balance w-2/3 md:w-1/3 lg:w-2/3">A freelance illustrator based on the south coast of Devon, UK.</p>
-                <a href="/" class="btn self-start text-white border-white">View my work</a>
+                <p class="text-white text-balance w-full xs:w-2/3 md:w-1/3 lg:w-2/3">A freelance illustrator based on the south coast of Devon, UK.</p>
+                <a href="/" class="btn btn-line self-start text-white !border-white">View my work<span class="icon-right">→</span></a>
             </div>
             <div class="col-span-2">
                 <div class="bg-ink-50 dark:bg-ink-900 rounded-xl p-4 flex flex-row gap-4">
                     <div class="basis-2/3 relative flex flex-col gap-4">
                         <p class="text-balance md:w-2/3 lg:w-full"><span class="italic animate-pulse">Now available:</span><br>A Little Slugger’s Guide to the Unwritten Rules of Baseball and Life</p>
-                        <a href="https://www.penguinrandomhouse.com/books/750039/a-little-sluggers-guide-to-the-unwritten-rules-of-baseball-and-life-by-patrick-renna-illustrated-by-tommy-parker" class="btn mt-auto self-start border-ink-200 dark:border-ink-700">Buy the book</a>
+                        <a href="https://www.penguinrandomhouse.com/books/750039/a-little-sluggers-guide-to-the-unwritten-rules-of-baseball-and-life-by-patrick-renna-illustrated-by-tommy-parker" class="btn btn-line mt-auto self-start border-ink-200 dark:border-ink-700">Buy the book<span class="icon-right">→</span></a>
                     </div>
                     <div class="basis-1/3 max-w-32 md:max-w-full ml-auto">
                         <Image src={book} alt="A Little Slugger’s Guide to the Unwritten Rules of Baseball and Life" class="book rounded-sm self-end" loading="eager"/>
                     </div>
                 </div>
                 <div class="col-span-2">
-                    <a href="/" class="btn w-full btn-colour">Portfolio ✏️</a>
-                    <a href="/news" class="btn w-full btn-colour">Newsletter 🗞️</a>
-                    <a href="https://synergyart.co.uk/artists/tommy-parker" class="btn w-full btn-colour">Synergy Art 🎨</a>
-                    <Social platform="Instagram" username="t_mmyparker" class="btn w-full btn-colour"/>
-                    <Social platform="Behance" username="t_mmyparker" class="btn w-full btn-colour"/>
+                    <a href="/" class="btn w-full btn-fill">Portfolio<span class="icon-right">✏️</span></a>
+                    <a href="/news" class="btn w-full btn-fill">Newsletter<span class="icon-right">🗞️</span></a>
+                    <a href="https://synergyart.co.uk/artists/tommy-parker" class="btn w-full btn-fill">Synergy Art<span class="icon-right">🎨</span></a>
+                    <Social platform="Instagram" username="t_mmyparker" class="btn w-full btn-fill"/>
+                    <Social platform="Behance" username="t_mmyparker" class="btn w-full btn-fill mb-4"/>
                 </div>
             </div>
         </div>
