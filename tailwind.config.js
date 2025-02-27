@@ -39,6 +39,21 @@ export default {
       },
       transitionTimingFunction: {
         'custom': 'cubic-bezier(.75,0,.25,1)',
+      },
+      keyframes: {
+        colourCycle: {
+          '0%': { fill: '#3e7ec5' },        // blue
+          '24.9999%': { fill: '#3e7ec5' },        // blue
+          '25%': { fill: '#e75f3a' },       // red
+          '49.9999%': { fill: '#e75f3a' },       // red
+          '50%': { fill: '#f482a7' },       // pink
+          '74.9999%': { fill: '#f482a7' },       // pink
+          '75%': { fill: '#f8c03b' },       // yellow
+          '100%': { fill: '#f8c03b' },       // yellow
+        }
+      },
+      animation: {
+        'colour-cycle': 'colourCycle .3s linear',
       }
     },
   },

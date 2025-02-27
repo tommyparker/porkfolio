@@ -13,9 +13,11 @@ const isNewsPost = pathSegments.includes('posts');
 
 <Container animate={false} class="navigation flex flex-col w-full fixed top-0 z-50 bg-paper dark:bg-ink-950 pb-0">
     <div class="flex md:grid md:grid-cols-2 items-center md:gap-4 w-full">
-        <a href="/" class="flex items-center h-8 w-full">
-            <Logo class="w-1/4 h-auto" />
-        </a>
+        <div class="flex items-center">
+          <a href="/">
+              <Logo class="h-6 lg:h-7 xl:h-8 w-auto" />
+          </a>
+        </div>
         <div class="menu flex gap-4 md:gap-8 ml-auto md:ml-0">
             <a class={`${currentPath === "" || isProjectPage ? "active" : ""} after-blue`} href="/">Work</a>
             <a class={`${currentPath === "news" || isNewsPost ? "active" : ""} after-red`} href="/news">News</a>
