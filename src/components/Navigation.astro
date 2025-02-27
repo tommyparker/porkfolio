@@ -1,7 +1,6 @@
 ---
 import Container from '../layouts/Container.astro';
-import { Image } from 'astro:assets';
-import logo from "../assets/Favicon.png";
+import Logo from './Logo.astro';
 
 const url = new URL(Astro.request.url);
 
@@ -13,16 +12,9 @@ const isNewsPost = pathSegments.includes('posts');
 ---
 
 <Container animate={false} class="navigation flex flex-col w-full fixed top-0 z-50 bg-paper dark:bg-ink-950 pb-0">
-    <div class="flex md:grid md:grid-cols-2 items-center gap-4 w-full">
-        <a href="/" class="logo flex items-center h-6 lg:h-7 xl:h-8">
-            <Image 
-                src={logo} 
-                alt="Tommy Parker" 
-                width={100} 
-                height={100} 
-                class="rounded-full object-cover h-6 lg:h-7 xl:h-8 w-auto duration-300 ease-custom hover:scale-110 border border-ink-50 dark:border-ink-900"
-                loading="eager"
-            />
+    <div class="flex md:grid md:grid-cols-2 items-center md:gap-4 w-full">
+        <a href="/" class="flex items-center h-8 w-full">
+            <Logo class="w-1/4 h-auto" />
         </a>
         <div class="menu flex gap-4 md:gap-8 ml-auto md:ml-0">
             <a class={`${currentPath === "" || isProjectPage ? "active" : ""} after-blue`} href="/">Work</a>

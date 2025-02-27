@@ -120,7 +120,7 @@
   }
 
   .svg-filler {
-    @apply fill-ink-200 dark:fill-ink-700;
+    @apply fill-black dark:fill-paper;
   }
 
   .menu a {
