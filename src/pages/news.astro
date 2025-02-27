@@ -5,6 +5,10 @@ import BlogPost from '../components/BlogPost.astro';
 import Container from '../layouts/Container.astro';
 import Subscribe from "../components/Subscribe.astro";
 
+import Drawn from "../components/Drawn.astro";
+import { Image } from 'astro:assets';
+import porker from "../assets/Porker_Mail.webp";
+
 const allPosts = await getCollection("posts");
 const sortedPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
@@ -12,8 +16,15 @@ const pageTitle = "News";
 ---
 
 <Layout pageTitle={pageTitle}>
-	<Container class="mt-12 lg:mt-40 min-h-[50svh] mb-16">
-		<h1 class="mb-2">Drawn</h1>
+	<Container class="lg:min-h-[90svh] mt-8 mb-16">
+		<div class="relative">
+			<Drawn class="w-5/6 h-auto"/>
+			<Image 
+				src={porker} 
+				alt="Porker" 
+				class="porker absolute right-0 bottom-0 max-w-[22vw] h-auto block mr-2" 
+			/>
+		</div>
 		<div class="grid grid-cols-4 gap-4">
 			<div class="col-start-1 col-span-full md:col-span-2 mb-20">
 				<p class="pt-2 mb-4 lg:text-balance">A place for news from my studio, covering project and job updates, showing tidbits from behind the scenes, sharing inspiration from other places and people, and posting the occasional piece of writing.</p>
@@ -29,3 +40,25 @@ const pageTitle = "News";
 		</div>
 	</Container>
 </Layout>
+
+<script>
+    import { animate, inView } from "motion";
+
+    function init() {
+        inView(".porker", (element) => {
+        animate(
+            element,
+            { x: [-48, 0] },
+            { duration: 0.8, easing: [0.75, 0, 0.25, 1] }
+        )
+
+        return () => animate(element, { x: -48 })
+    })
+    }
+
+    // Initialise on first load
+    init()
+
+    // Re-initialise after swapping pages
+    document.addEventListener("astro:after-swap", init)
+</script>

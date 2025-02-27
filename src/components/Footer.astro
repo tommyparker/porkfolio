@@ -28,7 +28,7 @@ const currentYear = new Date().getFullYear();
 
         <!-- Porker image -->
         <div class="mt-auto grid grid-cols-4 porker">
-            <Image src={porker} alt="Porker" class="max-h-64 2xl:max-h-96 w-auto col-span-2 col-start-3 md:col-span-1 md:col-start-3 opacity-0" />
+            <!-- <Image src={porker} alt="Porker" class="max-h-64 2xl:max-h-96 w-auto col-span-2 col-start-3 md:col-span-1 md:col-start-3 opacity-0" /> -->
         </div>
 
         <!-- Footer bottom -->
@@ -53,25 +53,3 @@ const currentYear = new Date().getFullYear();
 <Container animate={false}>
     <a class="min-w-full block bg-yellow text-black py-2 px-4 rounded-full no-underline text-center hover:bg-pink" href="#top">Back to top</a>
 </Container>
-
-<script>
-    import { animate, inView } from "motion";
-
-    function init() {
-        inView(".porker img", (element) => {
-        animate(
-            element,
-            { opacity: 1, x: [-48, 0] },
-            { duration: 0.9, easing: "circInOut" }
-        )
-
-        return () => animate(element, { opacity: 1, x: -48 })
-    })
-    }
-
-    // Initialise on first load
-    init()
-
-    // Re-initialise after swapping pages
-    document.addEventListener("astro:after-swap", init)
-</script>

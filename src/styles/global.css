@@ -119,6 +119,10 @@
     @apply no-underline;
   }
 
+  .svg-filler {
+    @apply fill-ink-200 dark:fill-ink-700;
+  }
+
   .menu a {
     @apply no-underline relative;
   }
@@ -359,7 +363,7 @@
   }
 
   .index-img {
-    @apply absolute pointer-events-none opacity-0 w-auto h-32 md:h-56 z-10 bg-white dark:bg-ink-800 rounded-xl shadow-xl;
+    @apply absolute pointer-events-none opacity-0 w-auto h-32 md:h-56 z-50 bg-white dark:bg-ink-800 rounded-xl shadow-xl;
   }
 
   .index-img img {
