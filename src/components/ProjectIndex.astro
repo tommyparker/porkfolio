@@ -1,17 +1,28 @@
 ---
 import IndexSingle from "./IndexSingle.astro";
+import IndexSingleMobile from "./IndexSingleMobile.astro";
 import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects', ({ data }) => {
 	return data.draft !== true;
 });
 
+// Log the first thumbnail to see its structure
+console.log('Thumbnail structure:', projects[0]?.data.thumbnail);
+
 const sortedProjects = projects.sort((a, b) => (a.data.order ?? 100) - (b.data.order ?? 100));
+
+// Get 4 random projects for mobile view
+const randomProjects = [...projects]
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 4);
 ---
 
-<div class="project-index">
-  <h3 class="mb-2">Project index</h3>
-  <div class="project-index-list">
+<div class="project-index my-20">
+  
+  <!-- Desktop List View -->
+  <div class="project-index-list mx-4 hidden lg:block pointer-fine:lg:block pointer-coarse:hidden">
+    <h3 class="mb-2">Project index</h3>
     {
         sortedProjects.map((project, index) => (
             <IndexSingle 
@@ -25,40 +36,65 @@ const sortedProjects = projects.sort((a, b) => (a.data.order ?? 100) - (b.data.o
         ))
     }
   </div>
+
+  <!-- Mobile/Touch Gallery View -->
+  <div class="block lg:hidden pointer-coarse:block">
+    <h3 class="mb-2 mx-4">More projects</h3>
+    <div class="project-index-gallery">
+      <div class="gallery-container">
+        {
+          randomProjects.map((project) => (
+            <IndexSingleMobile 
+                url={`/projects/${project.slug.split('/').pop()}/`} 
+                title={project.data.title} 
+                client={project.data.client} 
+                thumbnail={project.data.thumbnail}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
   import { animate, hover } from "motion";
   
   function init() {
-    // Index-img on hover
-    hover(".index-single", (element) => {
-      const singleImg = element.querySelector('.index-img');
-      
-      // Show and animate the image
-      animate(singleImg, { opacity: 1 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
-
-      return () => {
-        animate(singleImg, { opacity: 0 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
-      };
-    });
-
-    // Optimize cursor following
-    const indexSingles = document.querySelectorAll('.index-single');
+    // Check if device has touch capability
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
-    indexSingles.forEach(indexSingle => {
-      const singleImg = indexSingle.querySelector('.index-img');
-      
-      indexSingle.addEventListener('mousemove', (e) => {
-        const rect = indexSingle.getBoundingClientRect();
-        const x = e.clientX - rect.left; // Get position relative to element
-        const y = e.clientY - rect.top;  // Get position relative to element
+    // Only initialize hover effects for desktop non-touch devices
+    if (window.innerWidth >= 768 && !isTouch) {
+      // Index-img on hover
+      hover(".index-single", (element) => {
+        const singleImg = element.querySelector('.index-img') as HTMLElement;
         
-        requestAnimationFrame(() => {
-          singleImg.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+        // Show and animate the image
+        animate(singleImg, { opacity: 1 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
+
+        return () => {
+          animate(singleImg, { opacity: 0 }, { duration: 0, easing: [0.75, 0, 0.25, 1] });
+        };
+      });
+
+      // Optimize cursor following
+      const indexSingles = document.querySelectorAll('.index-single');
+      
+      indexSingles.forEach(indexSingle => {
+        const singleImg = indexSingle.querySelector('.index-img');
+        
+        indexSingle.addEventListener('mousemove', (e) => {
+          const rect = indexSingle.getBoundingClientRect();
+          const x = e.clientX - rect.left; // Get position relative to element
+          const y = e.clientY - rect.top;  // Get position relative to element
+          
+          requestAnimationFrame(() => {
+            singleImg.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+          });
         });
       });
-    });
+    }
   }
 
   // Initialize on first load

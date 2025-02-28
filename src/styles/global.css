@@ -400,6 +400,29 @@
     }
   }
 
+  /* Mobile Gallery Styles */
+  .project-index-gallery {
+    @apply w-full overflow-x-auto touch-pan-x;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .project-index-gallery::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
+  .gallery-container {
+    @apply flex gap-4 px-4 w-max;
+  }
+
+  .gallery-card {
+    @apply rounded-xl overflow-hidden w-[280px] flex-shrink-0 relative;
+  }
+
+  .gallery-card img {
+    @apply w-full h-[200px] object-cover;
+  }
+
   /* News */
   .blog-single {
     @apply flex flex-row justify-between gap-4 py-2 border-t first:border-t-0 border-ink-50 dark:border-ink-900 lg:hover:rounded-xl lg:hover:bg-ink-50 lg:hover:dark:bg-ink-900 lg:hover:px-4 transition-all duration-300 ease-custom no-underline;

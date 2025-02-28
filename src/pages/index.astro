@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Container from '../layouts/Container.astro';
 import Project from '../components/Project.astro';
 import { getCollection } from 'astro:content';
-import Logo from '../components/Logo.astro';
 
 const projects = await getCollection('projects', ({ data }) => {
 	return data.draft !== true;

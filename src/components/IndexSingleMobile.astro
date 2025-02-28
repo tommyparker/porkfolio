@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+
+const { title, client, url, thumbnail, slug, index } = Astro.props;
+const focus = thumbnail?.focus || 'center';
+---
+<a href={url} class="no-underline">
+  <div class={`gallery-card h-[200px] overflow-hidden thumbnail ${focus}`}>
+      <Image 
+      src={thumbnail.url}
+      inferSize
+      alt={thumbnail.alt}
+      sizes="(max-width: 1024px) 33vw"
+      class="w-[280px] h-[200px] object-cover"
+    />
+  </div>
+  <p class="mt-4">{title}</p>
+  {client && <p>{client.split('\n')[0].trim()}</p>}
+</a>

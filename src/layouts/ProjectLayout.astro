@@ -12,7 +12,7 @@ const { frontmatter } = Astro.props;
     <Container class="grid grid-cols-4 gap-x-4 py-0 mt-4 mb-12">
         <div class="col-span-full col-start-1  md:col-span-2">
             <div class="col-span-2">
-                <h3 class="mb-2">{frontmatter.title}</h3>
+                <h3 class="mb-2 text-balance">{frontmatter.title}</h3>
             </div>
         </div>
         <p class="col-start-1 md:col-start-3 col-span-full mb-4 text-balance">{frontmatter.description}</p>
@@ -75,9 +75,8 @@ const { frontmatter } = Astro.props;
     <Container class="project-images pt-0 grid grid-cols-6 gap-4">
         <slot/>
     </Container>
-    <Container class="py-0 my-20">
-        <ProjectIndex />
-    </Container>
+    
+    <ProjectIndex class="my-20" />
     
     <Exit href="/" slot="fixed" />
 </Layout>

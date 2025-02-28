@@ -3,8 +3,7 @@ import Container from '../layouts/Container.astro';
 import Subscribe from '../components/Subscribe.astro'
 import Social from './Social.astro';
 import Mail from './Mail.astro';
-import { Image } from 'astro:assets';
-import porker from "../assets/Porker_Mail.webp";
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -26,13 +25,8 @@ const currentYear = new Date().getFullYear();
             </div>
         </div>
 
-        <!-- Porker image -->
-        <div class="mt-auto grid grid-cols-4 porker">
-            <!-- <Image src={porker} alt="Porker" class="max-h-64 2xl:max-h-96 w-auto col-span-2 col-start-3 md:col-span-1 md:col-start-3 opacity-0" /> -->
-        </div>
-
         <!-- Footer bottom -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-ink-100 dark:border-ink-800">
+        <div class="mt-auto grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-ink-100 dark:border-ink-800">
             <div class="pb-8 md:pb-0 col-span-2">
                 <h4 class="pb-2">Stay updated with my newsletter</h4>
                 <Subscribe variant="modal"/>
