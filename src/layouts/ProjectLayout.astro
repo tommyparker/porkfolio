@@ -3,6 +3,7 @@ import Layout from './Layout.astro';
 import Container from '../layouts/Container.astro';
 import ProjectIndex from '../components/ProjectIndex.astro';
 import Exit from '../components/Exit.astro';
+import Next from '../components/Next.astro';
 
 const { frontmatter } = Astro.props;
 
@@ -79,4 +80,5 @@ const { frontmatter } = Astro.props;
     <ProjectIndex class="my-20" />
     
     <Exit href="/" slot="fixed" />
+    <Next slot="fixed" />
 </Layout>

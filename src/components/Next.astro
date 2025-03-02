@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects', ({ data }) => {
+	return data.draft !== true;
+});
+
+const sortedProjects = projects.sort((a, b) => (a.data.order ?? 100) - (b.data.order ?? 100));
+
+// Get current project slug from URL
+const currentSlug = Astro.url.pathname.split('/').filter(Boolean).pop();
+
+// Find current project index
+const currentIndex = sortedProjects.findIndex(project => project.slug.split('/').pop() === currentSlug);
+
+// Get next project (or first project if at the end)
+const nextProject = sortedProjects[(currentIndex + 1) % sortedProjects.length];
+const nextProjectSlug = nextProject.slug.split('/').pop();
+---
+
+<a class="exit right" href={`/projects/${nextProjectSlug}/`}>Next project<span class="exit-icon">→</span></a>

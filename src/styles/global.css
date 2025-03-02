@@ -134,18 +134,20 @@
     @apply transition-transform duration-300 ease-custom;
   }
   
-  svg:hover .letter:nth-child(1) { @apply translate-x-[0px] delay-0 animate-colour-cycle; }
-  svg:hover .letter:nth-child(2) { @apply translate-x-[8px] delay-[275ms] animate-colour-cycle; }
-  svg:hover .letter:nth-child(3) { @apply translate-x-[16px] delay-[250ms] animate-colour-cycle; animation-delay: 0.1s; }
-  svg:hover .letter:nth-child(4) { @apply translate-x-[24px] delay-[225ms] animate-colour-cycle; animation-delay: 0.2s; }
-  svg:hover .letter:nth-child(5) { @apply translate-x-[32px] delay-[200ms] animate-colour-cycle; animation-delay: 0.3s; }
-  svg:hover .letter:nth-child(6) { @apply translate-x-[40px] delay-[175ms] animate-colour-cycle; animation-delay: 0.4s; }
-  svg:hover .letter:nth-child(7) { @apply translate-x-[48px] delay-[150ms] animate-colour-cycle; animation-delay: 0.5s; }
-  svg:hover .letter:nth-child(8) { @apply translate-x-[56px] delay-[125ms] animate-colour-cycle; animation-delay: 0.6s; }
-  svg:hover .letter:nth-child(9) { @apply translate-x-[64px] delay-[100ms] animate-colour-cycle; animation-delay: 0.7s; }
-  svg:hover .letter:nth-child(10) { @apply translate-x-[72px] delay-[75ms] animate-colour-cycle; animation-delay: 0.8s; }
-  svg:hover .letter:nth-child(11) { @apply translate-x-[80px] delay-[50ms] animate-colour-cycle; animation-delay: 0.9s; }
-  svg:hover .letter:nth-child(12) { @apply translate-x-[88px] delay-[25ms] animate-colour-cycle; animation-delay: 1s; }
+  @media (pointer: fine) {
+    svg:hover .letter:nth-child(1) { @apply translate-x-[0px] delay-0 animate-colour-cycle; }
+    svg:hover .letter:nth-child(2) { @apply translate-x-[8px] delay-[275ms] animate-colour-cycle; }
+    svg:hover .letter:nth-child(3) { @apply translate-x-[16px] delay-[250ms] animate-colour-cycle; animation-delay: 0.1s; }
+    svg:hover .letter:nth-child(4) { @apply translate-x-[24px] delay-[225ms] animate-colour-cycle; animation-delay: 0.2s; }
+    svg:hover .letter:nth-child(5) { @apply translate-x-[32px] delay-[200ms] animate-colour-cycle; animation-delay: 0.3s; }
+    svg:hover .letter:nth-child(6) { @apply translate-x-[40px] delay-[175ms] animate-colour-cycle; animation-delay: 0.4s; }
+    svg:hover .letter:nth-child(7) { @apply translate-x-[48px] delay-[150ms] animate-colour-cycle; animation-delay: 0.5s; }
+    svg:hover .letter:nth-child(8) { @apply translate-x-[56px] delay-[125ms] animate-colour-cycle; animation-delay: 0.6s; }
+    svg:hover .letter:nth-child(9) { @apply translate-x-[64px] delay-[100ms] animate-colour-cycle; animation-delay: 0.7s; }
+    svg:hover .letter:nth-child(10) { @apply translate-x-[72px] delay-[75ms] animate-colour-cycle; animation-delay: 0.8s; }
+    svg:hover .letter:nth-child(11) { @apply translate-x-[80px] delay-[50ms] animate-colour-cycle; animation-delay: 0.9s; }
+    svg:hover .letter:nth-child(12) { @apply translate-x-[88px] delay-[25ms] animate-colour-cycle; animation-delay: 1s; }
+  }
 
   .menu a {
     @apply no-underline relative;
@@ -193,16 +195,28 @@
     @apply relative flex items-center justify-center px-4 py-2 bg-white dark:bg-ink-800 shadow-xl rounded-full text-center no-underline z-[100];
   }
 
-  .exit-arrow {
+  .exit-icon {
     @apply inline-block mr-4 transition-all duration-300 ease-custom;
   }
 
-  .exit:hover .exit-arrow {
+  .exit:hover .exit-icon {
     @apply mr-6;
   }
 
+  .exit.right {
+    @apply left-auto;
+  }
+  
+  .exit.right .exit-icon {
+    @apply ml-4 mr-0;
+  }
+  
+  .exit.right:hover .exit-icon {
+    @apply ml-6 mr-0;
+  }
+
   .exit-container {
-    @apply fixed bottom-4 left-4 w-auto h-auto pointer-events-none z-[200] opacity-0;
+    @apply fixed flex items-center justify-between bottom-4 px-4 w-full h-auto pointer-events-none z-[200] opacity-0;
     transform: translateY(100%) translateZ(0);
     -webkit-transform: translateY(100%) translateZ(0);
     backface-visibility: hidden;
@@ -486,7 +500,8 @@
   mux-player {
     --controls: none;
     --media-object-fit: cover;
-  
+    --media-background-color: theme('colors.paper');
+    @apply dark:[--media-background-color:theme(colors.ink.950)];
     inset: 0;
     z-index: 0;
   }

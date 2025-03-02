@@ -12,8 +12,12 @@ console.log('Thumbnail structure:', projects[0]?.data.thumbnail);
 
 const sortedProjects = projects.sort((a, b) => (a.data.order ?? 100) - (b.data.order ?? 100));
 
-// Get 4 random projects for mobile view
+// Get current project slug from URL
+const currentSlug = Astro.url.pathname.split('/').filter(Boolean).pop();
+
+// Get 4 random projects, excluding the current one
 const randomProjects = [...projects]
+  .filter(project => project.slug.split('/').pop() !== currentSlug)
   .sort(() => Math.random() - 0.5)
   .slice(0, 4);
 ---
